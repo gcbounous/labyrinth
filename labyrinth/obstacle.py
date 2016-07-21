@@ -3,7 +3,6 @@
 """This module contains the class Obstacle."""
 
 class Obstacle(MapObject):
-
     """Defines any object that can be contained in a map."""
 
     def __init__(self, point, symbol, passable):
