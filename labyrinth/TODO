@@ -1,0 +1,34 @@
+TODO:
+Point:
+    - Constructor : construct with parameters as: Point, tuple (x,y), list [x,y], dictionary {x:x , y:y} or just x, y
+    - getters
+    - setters
+    - str
+
+Robot:
+    - make it walk
+        - use arrows instead of letters (give an option in game menu)
+        - use number before
+
+Labyrinth:
+    - load maps
+    - make choice (if in middle of game ask to continue to play or not/ give list of unfinished games)
+    - load game (old or new)
+    - play
+    - Game menu
+        - arrow/letters (for directions)
+        - player name
+        - map menu
+            - map editor/creator
+            - delete map
+            - load map (new map)
+
+Map Editor/Creator
+
+BD:
+    - SQLite
+    - 
+
+Improvements:
+    - only show maze after door is opened once
+    - do it animation-like
