@@ -1,6 +1,6 @@
 # -*-coding:Utf-8 -*
-import Point
 """This module contains the class MapObject."""
+import point
 
 class MapObject:
     """Defines any object that can be contained in a map."""
@@ -9,7 +9,7 @@ class MapObject:
         """
         """
         self.point = Point(point)
-        self symbol = symbol
+        self.symbol = symbol
 
     def __repr__(self):
         """
@@ -19,4 +19,14 @@ class MapObject:
     def __str__(self):
         """
         """
+        return "<{1}: ({0})  >".format(self.point, self.symbol)
+
+    def get_symbol(self):
+        """
+        """
         return self.symbol
+
+    def get_point(self):
+        """
+        """
+        return self.poit

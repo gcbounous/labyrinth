@@ -1,9 +1,4 @@
 TODO:
-Point:
-    - Constructor : construct with parameters as: Point, tuple (x,y), list [x,y], dictionary {x:x , y:y} or just x, y
-    - getters
-    - setters
-    - str
 
 Robot:
     - make it walk
@@ -27,8 +22,11 @@ Map Editor/Creator
 
 BD:
     - SQLite
-    - 
+    -
 
 Improvements:
     - only show maze after door is opened once
     - do it animation-like
+
+DONE:
+    - Point
