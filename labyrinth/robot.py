@@ -1,6 +1,6 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class Robot."""
-import map_object
+from map_object import MapObject
 
 class Robot(MapObject):
     """Defines the robot contained in the map."""
@@ -13,11 +13,12 @@ class Robot(MapObject):
     def __repr__(self):
         """
         """
-        return "<Robot ({1}): ({0})>".format(self.point, self.symbol)
+        return "<Robot ({}): {}>".format(self.symbol, self.point)
 
     def walk(direction, sapaces = 1):
         """
         """
+
 
 if __name__ == '__main__':
     print raw_input()

@@ -1,6 +1,6 @@
 # -*-coding:Utf-8 -*#
-
 """This module contains the class Obstacle."""
+from map_object import MapObject
 
 class Obstacle(MapObject):
     """Defines any object that can be contained in a map."""
@@ -14,4 +14,4 @@ class Obstacle(MapObject):
     def __repr__(self):
         """
         """
-        return "<Obstacle: ({}), symbol: {}, passable: {} >".format(self.point, self.symbol, self.passable)
+        return "<Obstacle: {}, symbol: {}, passable: {} >".format(self.point, self.symbol, self.passable)

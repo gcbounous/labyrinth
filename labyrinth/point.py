@@ -71,3 +71,7 @@ class Point:
                 - y: new y coordinate
         """
         self.y = y
+
+if __name__ == "__main__":
+    point = Point(1,1)
+    print point

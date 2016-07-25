@@ -1,6 +1,6 @@
 # -*-coding:Utf-8 -*#
-
 """This module contains the class Exit."""
+from obstacle import Obstacle
 
 class Exit(Obstacle):
 
@@ -14,4 +14,4 @@ class Exit(Obstacle):
     def __repr__(self):
         """
         """
-        return "<Exit ({1}): ({0})>".format(self.point, self.symbol)
+        return "<Exit ({}): {}>".format(self.symbol, self.point)

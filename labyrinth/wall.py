@@ -1,6 +1,6 @@
 # -*-coding:Utf-8 -*#
-
 """This module contains the class Wall."""
+from obstacle import Obstacle
 
 class Wall(Obstacle):
 
@@ -14,4 +14,4 @@ class Wall(Obstacle):
     def __repr__(self):
         """
         """
-        return "<Wall ({1}): ({0})>".format(self.point, self.symbol)
+        return "<Wall ({}): {}>".format(self.symbol, self.point)
