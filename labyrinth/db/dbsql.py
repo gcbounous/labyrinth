@@ -1,45 +1,45 @@
 # -*-coding:Utf-8 -*#
-"""This module contains the class DBText."""
+"""This module contains the class DBSql."""
 import os
-import pickle
 
-class DBText():
+class DBSql():
+    """Defines a SQL data base."""
 
-    """Defines a text data base."""
-
-    DB_PATH = "./dbtext"
+    DB_PATH = "./dbsql.db"
+    DEFAUL_MAPS = "./default_maps/"
 
     def __init__(self):
         """
         """
-        self.maps = []
+        self.maps = {}
         self.users = []
         self.load_games = {}
 
-        self.initialize_db()
+        self._initialize_db()
 
-    def initialize_db(self):
+    def _initialize_db(self):
         """
         """
         if os.path.isfile(self.DB_PATH):
             self.load_db()
+        else:
+            self._load_default_maps()
+            self.write_db
+
+    def _load_default_maps(self):
+        """
+        """
+        pass
 
     def write_db(self):
         """
         """
-        with open(self.DB_PATH, 'wb') as file_:
-            my_pickler = pickle.Pickler(file_)
-            my_pickler.dump(self)
+        pass
 
     def load_db(self):
         """
         """
-        with open(self.DB_PATH, 'rb') as file_:
-            my_unpickler = pickle.Unpickler(file_)
-            loaded_db = my_unpickler.load()
-            self.maps = loaded_db.maps
-            self.users = loaded_db.users
-            self.load_games = loaded_db.load_games
+        pass
 
     def get_maps(self):
         """
@@ -80,15 +80,3 @@ class DBText():
         """
         """
         pass
-
-if __name__ == '__main__':
-    db = DBText()
-    db.maps.append(0)
-    db.maps.append(1)
-    db.maps.append(2)
-    db.write_db()
-    print(db.maps)
-    db.maps = "ferrou"
-    print(db.maps)
-    db.load_db()
-    print(db.maps)

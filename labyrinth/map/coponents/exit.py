@@ -1,10 +1,10 @@
 # -*-coding:Utf-8 -*#
-"""This module contains the class Door."""
+"""This module contains the class Exit."""
 from obstacle import Obstacle
 
-class Door(Obstacle):
+class Exit(Obstacle):
 
-    """Defines a door object."""
+    """Defines an exit object (the exit of the labyrinth)."""
 
     def __init__(self, point):
         """
@@ -14,4 +14,4 @@ class Door(Obstacle):
     def __repr__(self):
         """
         """
-        return "<Door ({}): {}>".format(self.symbol, self.point)
+        return "<Exit ({}): {}>".format(self.symbol, self.point)
