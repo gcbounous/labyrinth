@@ -1,7 +1,8 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class Map."""
-from obstacle import Obstacle
-from robot import Robot
+import map.components as components
+from components.obstacle import Obstacle
+from components.robot import Robot
 
 class Map:
     """Defines a map object."""

@@ -1,8 +1,8 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class Labyrinth."""
 from map import Map
-from dbtext import DBText
-from dbsql import DBSql
+from db.dbtext import DBText
+from db.dbsql import DBSql
 
 class Labyrinth():
 
