@@ -1,6 +1,6 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class Labyrinth."""
-from map import Map
+from game import Game
 from db.dbtext import DBText
 from db.dbsql import DBSql
 
@@ -11,7 +11,7 @@ class Labyrinth():
     def __init__(self, db = "text"):
         """
         """
-        self._map = None
+        self._game = None
 
 
         self._game_main()
@@ -29,3 +29,5 @@ class Labyrinth():
         """
         """
         user = raw_input("Type your user name: ")
+
+
