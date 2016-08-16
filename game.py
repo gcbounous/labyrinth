@@ -1,11 +1,10 @@
 # -*-coding:Utf-8 -*#
-"""This module contains the class Map."""
-import map.components as components
-from components.obstacle import Obstacle
-from components.robot import Robot
+"""This module contains the class Game."""
+from map.components.obstacle import Obstacle
+from map.omponents.robot import Robot
 
-class Map:
-    """Defines a map object."""
+class Game:
+    """Defines a game object. Is the acctual game populated with it's map component objects."""
 
     def __init__(self, name, text):
         """

@@ -1,0 +1,23 @@
+(idb.dbtext
+DBText
+p0
+(dp1
+S'maps'
+p2
+(dp3
+S'facile.txt'
+p4
+S'OOOOOOOOOO\nO O    O O\nO . OO   O\nO O O    O\nO OOOO O.O\nO_O O    *\nO OOOOOO.O\nO O      O\nO O OOOOOO\nO . O    O\nOOOOOOOOOO\n'
+p5
+sS'prison.txt'
+p6
+S'OOOOOOOOOOOOOOOOOOOO\nO_O . O    O .     O\nO.O O O    O O     O\nO O O O    O O     O\nO.O O .    O O     O\nO O O OOOOOO O     O\nO O O        O     O\nO O OOOOOOOOOO     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O.O        O     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO.O O        O     O\nO   O        O     *\nOOOOOOOOOOOOOOOOOOOO\n'
+p7
+sS'__init__.py'
+p8
+S''
+p9
+ssS'users'
+p10
+(dp11
+sb.

@@ -1,14 +1,15 @@
-# -*-coding:Utf-8 -*#
+import os
 
-DB_TEXT_PATH = "./db/dbtext.db"
-DB_SQL_PATH = "./db/dbsql.db"
-MAPS_DIR = "./maps/"
-MAPS_DEFAULT = "{}{}".format(MAPS_DIR,"default/")
-MAPS_PERSONAL = "{}{}".format(MAPS_DIR,"personal/")
+DB_DIR = "{}/db/".format(os.getcwd())
+DB_TEXT_PATH = "{}dbtext.db".format(DB_DIR)
+DB_SQL_PATH = "{}dbsql.db".format(DB_DIR)
+MAPS_DIR = "{}/map/".format(os.getcwd())
+MAPS_DEFAULT = "{}default/".format(MAPS_DIR)
+MAPS_PERSONAL = "{}personal/".format(MAPS_DIR)
 
 def singleton(cls):
     instances = {}
-
+    
     def get_instance():
         if cls not in instances:
             instances[cls] = cls()

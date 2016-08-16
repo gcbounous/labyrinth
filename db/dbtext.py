@@ -13,25 +13,14 @@ class DBText():
         users : { user_name: {map_name : [map_objects] } }  *with robot
     """
 
+    teste = globals_.DB_SQL_PATH
+
     def __init__(self):
         """
             Constructor that initializes the data-base object
         """
         self.maps = {}
         self.users = {}
-
-        self._initialize_db()
-
-    def _initialize_db(self):
-        """
-            Method that populates the object attributes
-        """
-        if os.path.isfile(globals_.DB_TEXT_PATH):
-            self._load_db()
-        else:
-            self._load_default_maps()
-            self._load_personal_maps()
-            self._write_db()
 
     def _load_default_maps(self):
         """
@@ -66,6 +55,17 @@ class DBText():
             loaded_db = my_unpickler.load()
             self.maps = loaded_db.maps
             self.users = loaded_db.users
+ 
+    def initialize_db(self):
+        """
+            Method that populates the object attributes
+        """
+        if os.path.isfile(globals_.DB_TEXT_PATH):
+            self._load_db()
+        else:
+            self._load_default_maps()
+            self._load_personal_maps()
+            self._write_db()
 
     def get_maps(self):
         """
@@ -116,7 +116,7 @@ class DBText():
         """
         game_text = None
         self._load_db()
-        if user_name in self.users.keys()
+        if user_name in self.users.keys():
             user = self.users[user_name]
             if game_name in user.keys():
                 game_text = user[game_name]
@@ -176,6 +176,5 @@ class DBText():
 
 if __name__ == '__main__':
     db = DBText()
-    for n,m in db.maps.items():
-        print n
-        print m
+
+    print globals_.DB_TEXT_PATH
