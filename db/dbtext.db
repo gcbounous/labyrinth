@@ -5,19 +5,33 @@ p0
 S'maps'
 p2
 (dp3
-S'facile.txt'
+S'facile'
 p4
 S'OOOOOOOOOO\nO O    O O\nO . OO   O\nO O O    O\nO OOOO O.O\nO_O O    *\nO OOOOOO.O\nO O      O\nO O OOOOOO\nO . O    O\nOOOOOOOOOO\n'
 p5
-sS'prison.txt'
+sS'meuMapinha'
 p6
-S'OOOOOOOOOOOOOOOOOOOO\nO_O . O    O .     O\nO.O O O    O O     O\nO O O O    O O     O\nO.O O .    O O     O\nO O O OOOOOO O     O\nO O O        O     O\nO O OOOOOOOOOO     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O.O        O     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO.O O        O     O\nO   O        O     *\nOOOOOOOOOOOOOOOOOOOO\n'
+S'lorilu'
 p7
-sS'__init__.py'
+sS'lorilu.txt'
 p8
-S''
+S'meuMapinha'
 p9
-ssS'users'
+sS'prison'
 p10
-(dp11
-sb.
+S'OOOOOOOOOOOOOOOOOOOO\nO_O . O    O .     O\nO.O O O    O O     O\nO O O O    O O     O\nO.O O .    O O     O\nO O O OOOOOO O     O\nO O O        O     O\nO O OOOOOOOOOO     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O.O        O     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO.O O        O     O\nO   O        O     *\nOOOOOOOOOOOOOOOOOOOO\n'
+p11
+ssS'users'
+p12
+(dp13
+S'gabriel'
+p14
+(dp15
+sS'gab'
+p16
+(dp17
+S'meuMapinha'
+p18
+S'lorilu ---> \\o/'
+p19
+sssb.

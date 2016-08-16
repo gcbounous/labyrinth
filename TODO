@@ -19,9 +19,7 @@ Labyrinth:
             - load map (new map)
 
 Map Editor/Creator
-
-DBText:
-    -
+    - map checker (check if map has good caracteristics)
 
 DBSql:
     -
@@ -29,6 +27,7 @@ DBSql:
 Improvements:
     - only show maze after door is opened once
     - do it animation-like
+    - score
 
 DONE:
     - Point
