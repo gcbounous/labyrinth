@@ -32,14 +32,14 @@ class DBText():
             self._load_personal_maps()
             self._write_db()
 
-    def get_maps(self):
+    def get_all_maps(self):
         """
             Method that returns all maps
         """
         self._load_db()
         return self.maps
 
-    def get_users(self):
+    def get_all_users(self):
         """
             Method that returns all users
         """
@@ -72,7 +72,7 @@ class DBText():
             print "User-id '{}' doesn't exist.".format(user_name)
             return None
 
-    def get_user_game(self, user_name, game_name):
+    def get_saved_game(self, user_name, game_name):
         """
             Mathod that returns a saved game
             params:
@@ -135,6 +135,7 @@ class DBText():
                 - game_name
                 - game_text
         """
+        self._load_db()
         if user_name in self.users.keys():
             self.users[user_name][game_name] = game_text
             self._write_db()
