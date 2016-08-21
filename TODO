@@ -18,6 +18,10 @@ Labyrinth:
             - delete map
             - load map (new map)
 
+Game:
+    - convert text -> object
+    - convert obj -> text (str/repr)
+
 Map Editor/Creator
     - map checker (check if map has good caracteristics)
 
@@ -28,6 +32,12 @@ Improvements:
     - only show maze after door is opened once
     - do it animation-like
     - score
+
+    Point:
+        - order bay x then y
+
+    Map_object:
+        - order by point
 
 DONE:
     - Point

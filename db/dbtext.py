@@ -27,7 +27,6 @@ class DBText():
         if os.path.isfile(globals_.DB_TEXT_PATH):
             self._load_db()
         else:
-            print("creating")
             self._load_default_maps()
             self._load_personal_maps()
             self._write_db()
@@ -115,8 +114,10 @@ class DBText():
         """
         self._load_db()
         if map_name not in self.maps.keys():
+
             if not os.path.isdir(globals_.MAPS_PERSONAL):
                 os.mkdir(globals_.MAPS_PERSONAL)
+
             map_file = "{}.txt".format(map_name)
             with open("{}{}".format(globals_.MAPS_PERSONAL,map_file), 'w') as file_:
                 file_.write(map_text)
@@ -145,16 +146,18 @@ class DBText():
     ####  private functions ###
     def _load_default_maps(self):
         """
-            Method that gets the maps in the default_maps folder
+            Method that gets the default maps described in globals
         """
-        for f_name in os.listdir(globals_.MAPS_DEFAULT):
-            with open("{}{}".format(globals_.MAPS_DEFAULT,f_name), 'r') as file_:
-                self.maps[f_name.split(".")[0]] = file_.read()
+        for map_name,map_text in globals_.DEFAULT_MAPS.items():
+            self.maps[map_name] = map_text
 
     def _load_personal_maps(self):
         """
             Method that gets the maps in the personnal_maps folder
         """
+        if not os.path.isdir(globals_.MAPS_PERSONAL):
+                os.mkdir(globals_.MAPS_PERSONAL)
+
         for f_name in os.listdir(globals_.MAPS_PERSONAL):
             with open("{}{}".format(globals_.MAPS_PERSONAL,f_name), 'r') as file_:
                 self.maps[f_name.split(".")[0]] = file_.read()

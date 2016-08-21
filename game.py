@@ -10,9 +10,20 @@ class Game:
         """
         """
         self.name = name
+        self.game_map = []
+        self.game_map = populate_map(text)
 
 
     def __repr__(self):
         """
         """
-        return "<Obstacle: {}, symbol: {}, passable: {} >".format(self.point, self.symbol, self.passable)
+        return "<Game: name {}, text: {}>".format(self.name, str(self))
+
+    def __str__(self):
+    	"""
+    		Tranforms the game_map into text
+    	"""
+    	game_text = ""
+    	for object in game_map:
+    		
+    	return game_text

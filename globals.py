@@ -10,7 +10,6 @@ MAPS_DIR = "{}/map/".format(os.getcwd())
 MAPS_DEFAULT = "{}default/".format(MAPS_DIR)
 MAPS_PERSONAL = "{}personal/".format(MAPS_DIR)
 
-
 # DECORATORS #
 
 def singleton(cls):
@@ -22,3 +21,42 @@ def singleton(cls):
         return instances[cls]
 
     return get_instance
+
+# DEFAULT MAPS #
+
+DEFAULT_MAPS = {
+				'prison':
+						"OOOOOOOOOOOOOOOOOOOO\n"
+						"O_O . O    O .     O\n"
+						"O.O O O    O O     O\n"
+						"O O O O    O O     O\n"
+						"O.O O .    O O     O\n"
+						"O O O OOOOOO O     O\n"
+						"O O O        O     O\n"
+						"O O OOOOOOOOOO     O\n"
+						"O.O .        O     O\n"
+						"O O O        O     O\n"
+						"O O O        O     O\n"
+						"O O.O        O     O\n"
+						"O.O .        O     O\n"
+						"O O O        O     O\n"
+						"O O O        O     O\n"
+						"O O O        O     O\n"
+						"O O O        O     O\n"
+						"O.O O        O     O\n"
+						"O   O        O     *\n"
+						"OOOOOOOOOOOOOOOOOOOO\n"
+						,
+				'easy':
+						"OOOOOOOOOO\n"
+						"O O    O O\n"
+						"O . OO   O\n"
+						"O O O    O\n"
+						"O OOOO O.O\n"
+						"O_O O    *\n"
+						"O OOOOOO.O\n"
+						"O O      O\n"
+						"O O OOOOOO\n"
+						"O . O    O\n"
+						"OOOOOOOOOO\n"
+				}

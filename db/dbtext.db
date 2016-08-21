@@ -5,33 +5,25 @@ p0
 S'maps'
 p2
 (dp3
-S'facile'
-p4
-S'OOOOOOOOOO\nO O    O O\nO . OO   O\nO O O    O\nO OOOO O.O\nO_O O    *\nO OOOOOO.O\nO O      O\nO O OOOOOO\nO . O    O\nOOOOOOOOOO\n'
-p5
-sS'meuMapinha'
-p6
 S'lorilu'
+p4
+S'OOOOOOOOOO\nO        O\nO        O\nO        O\nO_       *\nO        O\nO        O\nO        O\nOOOOOOOOOO'
+p5
+sS'easy'
+p6
+S'OOOOOOOOOO\nO O    O O\nO . OO   O\nO O O    O\nO OOOO O.O\nO_O O    *\nO OOOOOO.O\nO O      O\nO O OOOOOO\nO . O    O\nOOOOOOOOOO\n'
 p7
-sS'lorilu.txt'
-p8
-S'meuMapinha'
-p9
 sS'prison'
-p10
+p8
 S'OOOOOOOOOOOOOOOOOOOO\nO_O . O    O .     O\nO.O O O    O O     O\nO O O O    O O     O\nO.O O .    O O     O\nO O O OOOOOO O     O\nO O O        O     O\nO O OOOOOOOOOO     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O.O        O     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO.O O        O     O\nO   O        O     *\nOOOOOOOOOOOOOOOOOOOO\n'
-p11
+p9
 ssS'users'
+p10
+(dp11
+S'Mari'
 p12
 (dp13
-S'gabriel'
+sS'Gab'
 p14
 (dp15
-sS'gab'
-p16
-(dp17
-S'meuMapinha'
-p18
-S'lorilu ---> \\o/'
-p19
-sssb.
+ssb.
