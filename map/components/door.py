@@ -6,12 +6,7 @@ class Door(Obstacle):
 
     """Defines a door object."""
 
-    def __init__(self, point):
+    def __init__(self, point = None):
         """
         """
         Obstacle.__init__(self, point, ".", True)
-
-    def __repr__(self):
-        """
-        """
-        return "<Door ({}): {}>".format(self.symbol, self.point)

@@ -20,7 +20,7 @@ class Point:
         """
             Point representation
         """
-        return "<Point ({},{})>".format(self.x, self.y)
+        return str(self)
 
     def __str__(self):
         """

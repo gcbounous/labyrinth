@@ -11,7 +11,8 @@ class Obstacle(MapObject):
         MapObject.__init__(self, point, symbol)
         self.passable = passable
 
-    def __repr__(self):
+    def is_passable(self):
         """
+            Returns true if the obstacle is passable
         """
-        return "<Obstacle: {}, symbol: {}, passable: {} >".format(self.point, self.symbol, self.passable)
+        return self.passable

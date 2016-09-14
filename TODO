@@ -19,8 +19,11 @@ Labyrinth:
             - load map (new map)
 
 Game:
-    - convert text -> object
-    - convert obj -> text (str/repr)
+    - convert text -> object (OK)
+    - convert obj -> text (str/repr) (OK)
+    - start()
+    - load_robot()
+    - play()
 
 Map Editor/Creator
     - map checker (check if map has good caracteristics)
@@ -34,7 +37,7 @@ Improvements:
     - score
 
     Point:
-        - order bay x then y
+        - order by x then y
 
     Map_object:
         - order by point

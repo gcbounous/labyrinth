@@ -1,10 +1,14 @@
 # -*-coding:Utf-8 -*#
 import globals as globals_
 from db.dbtext import DBText
+from game import Game
 
 db = DBText()
 db.initialize()
 
-print db.get_map('prison')
-db.new_user('Mari')
-db.new_user("Gab")
+game  =  Game("lorilu", db.get_map('prison'))
+print repr(game)
+
+print str(game.get_game_map())
+
+# TEST GAME functions

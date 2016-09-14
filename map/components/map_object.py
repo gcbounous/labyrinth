@@ -8,28 +8,28 @@ class MapObject:
     def __init__(self, point, symbol):
         """
         """
-        self._point = point
-        self._symbol = symbol
+        self.point = point
+        self.symbol = symbol
 
     def get_symbol(self):
         """
         """
-        return self._symbol
+        return self.symbol
 
     def get_point(self):
         """
         """
-        return self.poit
+        return self.point
 
     def __repr__(self):
         """
         """
-        return "<MapObject: {}, symbol: {} >".format(self._point, self._symbol)
+        return str(self)
 
     def __str__(self):
         """
         """
-        return "<{1} : {0}  >".format(self._point, self._symbol)
+        return self.symbol
 
 if __name__ == "__main__":
     map_o = MapObject(Point(1,1), "\o")
