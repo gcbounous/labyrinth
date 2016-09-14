@@ -6,9 +6,10 @@ from game import Game
 db = DBText()
 db.initialize()
 
-game  =  Game("lorilu", db.get_map('prison'))
+game  =  Game("lorilu", db.get_map('easy'))
 print repr(game)
 
-print str(game.get_game_map())
+game.start()
+print repr(game)
 
 # TEST GAME functions

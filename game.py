@@ -68,6 +68,37 @@ class Game:
                 self._game_map.append(Floor(point))
                 x += 1
 
+    def _load_robot(self):
+        """
+            If robot is not present it is loaded in the place of "start"
+        """
+        for i, obj in enumerate(self._game_map):
+            if isinstance(obj, Start):
+                point = obj.get_point()
+                self._game_map[i] = Robot(point)
+
+    def _play(self):
+        """
+            Game loop.
+        """
+        pass
+
+    def start(self):
+        """
+            Method that starts a game, loading the robot if needed.
+            It has the play loop as well.
+            @return the map if exit in the middle of the game or None, if game is finished
+        """
+        robot_present = False
+        for obj in self._game_map:
+            if isinstance(obj, Robot):
+                robot_present = True
+                break
+        if not robot_present:
+            self._load_robot()
+
+        self._play()
+
     def get_name(self):
         """
         """
@@ -77,8 +108,6 @@ class Game:
         """
         """
         return self._game_map
-
-    
 
 if __name__ == '__main__':
     pass
