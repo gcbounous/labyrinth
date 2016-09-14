@@ -15,6 +15,7 @@ class Game:
         """
         """
         self._name = name
+        self._robot = Robot()
         self._game_map = list()
         self._populate_map(text)
 
@@ -68,20 +69,28 @@ class Game:
                 self._game_map.append(Floor(point))
                 x += 1
 
-    def _load_robot(self):
+    def _load_robot(self, map_has_robot):
         """
             If robot is not present it is loaded in the place of "start"
         """
+        instance = ""
+        if map_has_robot:
+            instance = "Robot"
+        else:
+            instance = "Start"
+
         for i, obj in enumerate(self._game_map):
-            if isinstance(obj, Start):
+            if isinstance(obj, instance):
                 point = obj.get_point()
-                self._game_map[i] = Robot(point)
+                self._robot.set_point(point)
+                self._game_map[i] = self._robot
+                break
 
     def _play(self):
         """
             Game loop.
         """
-        pass
+        move = ""
 
     def start(self):
         """
@@ -94,8 +103,7 @@ class Game:
             if isinstance(obj, Robot):
                 robot_present = True
                 break
-        if not robot_present:
-            self._load_robot()
+        self._load_robot(robot_present)
 
         self._play()
 

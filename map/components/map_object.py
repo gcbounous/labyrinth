@@ -5,7 +5,7 @@ from point import Point
 class MapObject:
     """Defines any object that can be contained in a map."""
 
-    def __init__(self, point, symbol):
+    def __init__(self, symbol, point = None):
         """
         """
         self.point = point
@@ -20,6 +20,11 @@ class MapObject:
         """
         """
         return self.point
+
+    def set_point(self, point):
+        """
+        """
+        self.point = point
 
     def __repr__(self):
         """
