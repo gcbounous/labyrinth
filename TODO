@@ -11,7 +11,7 @@ Labyrinth:
     - load game (old or new)
     - play
     - Game menu
-        - arrow/letters (for directions)
+        - arrow/letters (for directions) (qwerty or azerty (french mode))
         - player name
         - map menu
             - map editor/creator
@@ -19,10 +19,10 @@ Labyrinth:
             - load map (new map)
 
 Game:
-    - convert text -> object (OK)
-    - convert obj -> text (str/repr) (OK)
-    - start()
-    - load_robot()
+    -(OK) convert text -> object 
+    -(OK) convert obj -> text (str/repr) 
+    -(OK) start()
+    -(OK) load_robot()
     - play()
 
 Map Editor/Creator
@@ -32,6 +32,10 @@ DBSql:
     -
 
 Improvements:
+    - make a class inside globals only with gobal variables (like a enum) http://stackoverflow.com/questions/702834/whats-the-common-practice-for-enums-in-python
+    - Game
+        - arrows for directions
+        - move "on keypress"
     - only show maze after door is opened once
     - do it animation-like
     - score

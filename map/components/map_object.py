@@ -5,26 +5,33 @@ from point import Point
 class MapObject:
     """Defines any object that can be contained in a map."""
 
-    def __init__(self, symbol, point = None):
+    def __init__(self, symbol, passable, point = None):
         """
         """
-        self.point = point
-        self.symbol = symbol
+        self._point = point
+        self._symbol = symbol
+        self._passable = passable
 
     def get_symbol(self):
         """
         """
-        return self.symbol
+        return self._symbol
 
     def get_point(self):
         """
         """
-        return self.point
+        return self._point
 
     def set_point(self, point):
         """
         """
-        self.point = point
+        self._point = point
+
+    def is_passable(self):
+        """
+            Returns true if the obstacle is passable
+        """
+        return self._passable
 
     def __repr__(self):
         """
@@ -34,7 +41,7 @@ class MapObject:
     def __str__(self):
         """
         """
-        return self.symbol
+        return self._symbol
 
 if __name__ == "__main__":
     map_o = MapObject(Point(1,1), "\o")

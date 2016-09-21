@@ -8,9 +8,29 @@ class Robot(MapObject):
     def __init__(self, point = None):
         """
         """
-        MapObject.__init__(self, point, "@")
+        MapObject.__init__(self, "@", False, point)
 
     def walk(direction, sapaces = 1):
+        """
+        """
+        pass
+
+    def move_up(self):
+        """
+        """
+        pass
+
+    def move_down(self):
+        """
+        """
+        pass
+
+    def move_right(self):
+        """
+        """
+        pass
+
+    def move_left(self):
         """
         """
         pass

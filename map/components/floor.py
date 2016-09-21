@@ -7,14 +7,8 @@ class Floor(MapObject):
 
     def __init__(self, point = None):
         """
-        """
-        MapObject.__init__(self, point, " ")
-
-
-    def walk(direction, sapaces = 1):
-        """
-        """
-        pass
+        """        
+        MapObject.__init__(self, " ", True, point)
 
 
 if __name__ == '__main__':

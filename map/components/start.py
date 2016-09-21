@@ -1,11 +1,11 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class Start."""
-from obstacle import Obstacle
+from map_object import MapObject
 
-class Start(Obstacle):
+class Start(MapObject):
     """Defines an start object (where the robot will start in the map)."""
 
     def __init__(self, point = None):
         """
         """
-        Obstacle.__init__(self, point, "_", True)
+        MapObject.__init__(self, "_", True, point)

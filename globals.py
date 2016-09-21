@@ -10,6 +10,14 @@ MAPS_DIR = "{}/map/".format(os.getcwd())
 MAPS_DEFAULT = "{}default/".format(MAPS_DIR)
 MAPS_PERSONAL = "{}personal/".format(MAPS_DIR)
 
+KEYS = {
+		'UP': 'w',
+		'RIGHT': 'd',
+		'DOWN': 's',
+		'LEFT': 'a',
+		'QUIT': 'q'
+		}
+
 # DECORATORS #
 
 def singleton(cls):

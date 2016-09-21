@@ -1,12 +1,12 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class Door."""
-from obstacle import Obstacle
+from map_object import MapObject
 
-class Door(Obstacle):
+class Door(MapObject):
 
     """Defines a door object."""
 
     def __init__(self, point = None):
         """
         """
-        Obstacle.__init__(self, point, ".", True)
+        MapObject.__init__(self, ".", True, point)

@@ -1,12 +1,12 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class Exit."""
-from obstacle import Obstacle
+from map_object import MapObject
 
-class Exit(Obstacle):
+class Exit(MapObject):
 
     """Defines an exit object (the exit of the labyrinth)."""
 
     def __init__(self, point = None):
         """
         """
-        Obstacle.__init__(self, point, "*", True)
+        MapObject.__init__(self, "*", True, point)
