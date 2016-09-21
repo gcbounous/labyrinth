@@ -2,7 +2,7 @@ TODO:
 
 Robot:
     - make it walk
-        - use arrows instead of letters (give an option in game menu)
+        - move up /move down / move r/ move l
         - use number before
 
 Labyrinth:
@@ -24,6 +24,7 @@ Game:
     -(OK) start()
     -(OK) load_robot()
     - play()
+    - passes through a door
 
 Map Editor/Creator
     - map checker (check if map has good caracteristics)
@@ -31,20 +32,27 @@ Map Editor/Creator
 DBSql:
     -
 
+DBText:
+    - refactor saved games
+    - refactor map (text + robot) (caso seja so um mapa salvo passar robot_poit = None, nao precisa salvar) 
+
 Improvements:
     - make a class inside globals only with gobal variables (like a enum) http://stackoverflow.com/questions/702834/whats-the-common-practice-for-enums-in-python
-    - Game
-        - arrows for directions
-        - move "on keypress"
+
     - only show maze after door is opened once
     - do it animation-like
     - score
 
-    Point:
+    - Point:
         - order by x then y
 
-    Map_object:
+    - Map_object:
         - order by point
+
+    - Game
+        - to pass through door reload in steps (animation_like)
+        - arrows for directions
+        - move "on keypress"
 
 DONE:
     - Point

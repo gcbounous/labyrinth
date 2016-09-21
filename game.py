@@ -13,26 +13,29 @@ from globals import globals_
 class Game:
     """Defines a game object. Is the acctual game populated with it's map component objects."""
 
-    def __init__(self, name, text):
+    def __init__(self, name, text, robot_point = None):
         """
         """
         self._name = name
-        self._robot = Robot()
+        self._robot = Robot(robot_point)
         self._game_map = list()
         self._populate_map(text)
 
     def __repr__(self):
         """
         """
-        return "<Game: name {}, \ntext: \n{}>".format(self._name, str(self))
+        return "<Game: name {},\ntext: \n{}>".format(self._name, str(self))
 
     def __str__(self):
         """
             Tranforms the _game_map into text
         """
         game_text = ""
+        robot_point = self._robot.get_point()
         row = 0
         for obj in self._game_map:
+            if robot_point in not None and obj.get_point() == robot_point:
+                obj = self._robot
             if obj.get_point().get_y() == row + 1:
                 game_text = "{}\n".format(game_text)
                 row += 1        
@@ -58,9 +61,6 @@ class Game:
             elif c == Exit().get_symbol():
                 self._game_map.append(Exit(point))
                 x += 1
-            elif c == Robot().get_symbol():
-                self._game_map.append(Robot(point))
-                x += 1
             elif c == Start().get_symbol():
                 self._game_map.append(Start(point))
                 x += 1
@@ -73,19 +73,15 @@ class Game:
 
     def _load_robot(self, map_has_robot):
         """
-            If robot is not present it is loaded in the place of "start"
+            It sets the robot point the same as start. and sets start as a floor
+            If it's a saved game (robot_point is not None and no start) it sdoes noothing (already set in self._robot)
         """
-        instance = ""
-        if map_has_robot:
-            instance = "Robot"
-        else:
-            instance = "Start"
-
+  
         for i, obj in enumerate(self._game_map):
-            if isinstance(obj, instance):
+            if isinstance(obj, "Start"):
                 point = obj.get_point()
                 self._robot.set_point(point)
-                self._game_map[i] = self._robot
+                self._game_map[i] = Floor(point)
                 break
 
     def _get_object_by_point(self, point):
@@ -97,43 +93,34 @@ class Game:
                 return obj
         return None
 
-    def _move_is_valid)(self, move):
+    def _move_is_valid(self, move):
         """
             Verifies if the pressed key is an expected value and if there is room to move
             returns a tuple (True, robot move method) or False if not a valid move
         """
         valid_move = False
-        robot_move = None
 
         if move in globals_.KEYS:
             if move == globals_.KEYS['UP']:
                 robot_point = self._robot.get_point()
                 tmp_obj = _get_object_by_point(Point(robot_point.get_x(), robot_point.get_y()-1))
-                if tmp_obj is not None and tmp_obj.is_passable():
-                    valid_move = True
-                    robot_move = Robot.move_up()
 
             elif move == globals_.KEYS['DOWN']:
                 robot_point = self._robot.get_point()
                 tmp_obj = _get_object_by_point(Point(robot_point.get_x(), robot_point.get_y()+1))
-                if tmp_obj is not None and tmp_obj.is_passable():
-                    valid_move = True
-                    robot_move = Robot.move_down()
 
-            elif move == globals_.KEYS['RIGHT']:robot_point = self._robot.get_point()
+            elif move == globals_.KEYS['RIGHT']:
+                robot_point = self._robot.get_point()
                 tmp_obj = _get_object_by_point(Point(robot_point.get_x()+1, robot_point.get_y()))
-                if tmp_obj is not None and tmp_obj.is_passable():
-                    valid_move = True
-                    robot_move = Robot.move_right()
 
             elif move == globals_.KEYS['LEFT']:
                 robot_point = self._robot.get_point()
                 tmp_obj = _get_object_by_point(Point(robot_point.get_x()-1, robot_point.get_y()))
-                if tmp_obj is not None and tmp_obj.is_passable():
-                    valid_move = True
-                    robot_move = Robot.move_left()
 
-        return valid_move, robot_move if valid_move else valid_move 
+            if tmp_obj is not None and tmp_obj.is_passable():
+                    valid_move = True
+
+        return valid_move
 
     def _play(self):
         """
@@ -141,12 +128,13 @@ class Game:
         """
         game_over = False
         while not game_over:
-            reload_map()
+            # reload_map() 
             move = raw_input()
             while not _move_is_valid(move):
                 move = raw_input()
-            if move in keys.values():
-                if move == key['UP']:
+            self._robot.walk(move)
+            # end of game ?
+            # quit ?
 
     def start(self):
         """
@@ -154,12 +142,7 @@ class Game:
             It has the play loop as well.
             @return the map if exit in the middle of the game or None, if game is finished
         """
-        robot_present = False
-        for obj in self._game_map:
-            if isinstance(obj, Robot):
-                robot_present = True
-                break
-        self._load_robot(robot_present)
+        self._load_robot()
         self._play()
 
     def get_name(self):

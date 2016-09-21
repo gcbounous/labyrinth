@@ -10,10 +10,18 @@ class Robot(MapObject):
         """
         MapObject.__init__(self, "@", False, point)
 
-    def walk(direction, sapaces = 1):
+    def walk(self, direction, sapaces = 1):
         """
         """
-        pass
+        if move in globals_.KEYS:
+            if move == globals_.KEYS['UP']:
+                self.move_up()
+            elif move == globals_.KEYS['DOWN']:
+                self.move_down()
+            elif move == globals_.KEYS['RIGHT']:
+                self.move_right()
+            elif move == globals_.KEYS['LEFT']:
+                self.move_left()
 
     def move_up(self):
         """
