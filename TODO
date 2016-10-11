@@ -26,7 +26,8 @@ Game:
     -(OK) load_robot()
     -(OK) play()
     -(OK) passes through a door
-    - TEST!!!
+    - TEST!!! (almost ok)
+    - deixar bonitinho, voir DBText
 
 Map Editor/Creator
     - map checker (check if map has good caracteristics)
