@@ -22,10 +22,11 @@ class MapObject:
         """
         return self._point
 
-    def set_point(self, point):
+    def set_point(self, x, y):
         """
         """
-        self._point = point
+        self._point.set_x(x)
+        self._point.set_y(y)
 
     def is_passable(self):
         """

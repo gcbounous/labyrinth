@@ -1,6 +1,7 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class Robot."""
 from map_object import MapObject
+import globals as globals_
 
 class Robot(MapObject):
     """Defines the robot contained in the map."""
@@ -13,34 +14,38 @@ class Robot(MapObject):
     def walk(self, direction, sapaces = 1):
         """
         """
-        if move in globals_.KEYS:
-            if move == globals_.KEYS['UP']:
+        if direction in globals_.KEYS.values():
+            if direction == globals_.KEYS['UP']:
                 self.move_up()
-            elif move == globals_.KEYS['DOWN']:
+            elif direction == globals_.KEYS['DOWN']:
                 self.move_down()
-            elif move == globals_.KEYS['RIGHT']:
+            elif direction == globals_.KEYS['RIGHT']:
                 self.move_right()
-            elif move == globals_.KEYS['LEFT']:
+            elif direction == globals_.KEYS['LEFT']:
                 self.move_left()
 
     def move_up(self):
         """
         """
+        print 'up'
         pass
 
     def move_down(self):
         """
         """
+        print 'down'
         pass
 
     def move_right(self):
         """
         """
+        print 'right'
         pass
 
     def move_left(self):
         """
         """
+        print 'left'
         pass
 
 if __name__ == '__main__':

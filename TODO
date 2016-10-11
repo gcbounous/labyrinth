@@ -10,6 +10,7 @@ Labyrinth:
     - make choice (if in middle of game ask to continue to play or not/ give list of unfinished games)
     - load game (old or new)
     - play
+    - check for game status (if in_game ask to save)
     - Game menu
         - arrow/letters (for directions) (qwerty or azerty (french mode))
         - player name
@@ -23,8 +24,9 @@ Game:
     -(OK) convert obj -> text (str/repr) 
     -(OK) start()
     -(OK) load_robot()
-    - play()
-    - passes through a door
+    -(OK) play()
+    -(OK) passes through a door
+    - TEST!!!
 
 Map Editor/Creator
     - map checker (check if map has good caracteristics)
@@ -40,7 +42,7 @@ Improvements:
     - make a class inside globals only with gobal variables (like a enum) http://stackoverflow.com/questions/702834/whats-the-common-practice-for-enums-in-python
 
     - only show maze after door is opened once
-    - do it animation-like
+    - do it animation-like (game._print_map())
     - score
 
     - Point:

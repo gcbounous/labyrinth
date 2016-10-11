@@ -18,6 +18,12 @@ KEYS = {
 		'QUIT': 'q'
 		}
 
+STATUS = {
+		'IN_PLAY': 0,
+		'OVER': 1,
+		'NEW': 2	
+		}
+
 # DECORATORS #
 
 def singleton(cls):
