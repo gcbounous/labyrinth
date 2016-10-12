@@ -38,10 +38,9 @@ DBText:
 
 Improvements:
     - make a class inside globals only with gobal variables (like a enum) http://stackoverflow.com/questions/702834/whats-the-common-practice-for-enums-in-python
-
     - only show maze after door is opened once
-    - do it animation-like (game._print_map())
     - score
+    - make one way doors 
 
     - Point:
         - order by x then y
@@ -53,7 +52,7 @@ Improvements:
         - to pass through door reload in steps (animation_like)
         - arrows for directions
         - move "on keypress" 
-        - use number before walking (4 up, walks 4 points up)
+        - use number before walking 
 
 DONE:
     - Point
