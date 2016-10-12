@@ -5,12 +5,9 @@ from game import Game
 
 db = DBText()
 db.initialize()
-print db.get_all_maps()
 
-game  =  Game("lorilu", db.get_map('lorilu'))
-print repr(game)
+game  =  Game("lorilu", db.get_map('empty'))
 
 game.start()
-print repr(game)
 
 # TEST GAME functions

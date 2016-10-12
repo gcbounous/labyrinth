@@ -3,6 +3,7 @@ import os
 
 # GLOBAL VARIABLES #
 
+""" paths """
 DB_DIR = "{}/db/".format(os.getcwd())
 DB_TEXT_PATH = "{}dbtext.db".format(DB_DIR)
 DB_SQL_PATH = "{}dbsql.db".format(DB_DIR)
@@ -10,6 +11,7 @@ MAPS_DIR = "{}/map/".format(os.getcwd())
 MAPS_DEFAULT = "{}default/".format(MAPS_DIR)
 MAPS_PERSONAL = "{}personal/".format(MAPS_DIR)
 
+""" keys dictionnary """
 KEYS = {
 		'UP': 'w',
 		'RIGHT': 'd',
@@ -18,14 +20,17 @@ KEYS = {
 		'QUIT': 'q'
 		}
 
+""" map status dictionnary"""
 STATUS = {
 		'IN_PLAY': 0,
 		'OVER': 1,
 		'NEW': 2	
 		}
 
+
 # DECORATORS #
 
+""" singleton decorator -> can only create 1 instance"""
 def singleton(cls):
     instances = {}
     
@@ -35,6 +40,7 @@ def singleton(cls):
         return instances[cls]
 
     return get_instance
+    
 
 # DEFAULT MAPS #
 
@@ -73,4 +79,16 @@ DEFAULT_MAPS = {
 						"O O OOOOOO\n"
 						"O . O    O\n"
 						"OOOOOOOOOO\n"
+						,
+				'empty':
+						"OOOOOOOOOOOOOOOOOOOO\n"
+						"O                  O\n"
+						"O                  O\n"
+						"O                  O\n"
+						"O         _        O\n"
+						"O                  O\n"
+						"O                  O\n"
+						"O                  O\n"
+						"O                  *\n"
+						"OOOOOOOOOOOOOOOOOOOO\n"
 				}

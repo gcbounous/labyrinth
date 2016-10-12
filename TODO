@@ -1,9 +1,16 @@
 TODO:
 
-Robot:
-    - make it walk
-        - move up /move down / move r/ move l
-        - use number before
+Documentation:
+    - game
+    - labyrinth
+    - robot
+    - door
+    - exit
+    - floor
+    - map_object
+    - point
+    - start
+    - wall
 
 Labyrinth:
     - load maps
@@ -19,16 +26,6 @@ Labyrinth:
             - delete map
             - load map (new map)
 
-Game:
-    -(OK) convert text -> object 
-    -(OK) convert obj -> text (str/repr) 
-    -(OK) start()
-    -(OK) load_robot()
-    -(OK) play()
-    -(OK) passes through a door
-    - TEST!!! (almost ok)
-    - deixar bonitinho, voir DBText
-
 Map Editor/Creator
     - map checker (check if map has good caracteristics)
 
@@ -37,7 +34,7 @@ DBSql:
 
 DBText:
     - refactor saved games
-    - refactor map (text + robot) (caso seja so um mapa salvo passar robot_poit = None, nao precisa salvar) 
+    - refactor map (text + robot) (caso seja so um mapa salvo passar robot_point = None, nao precisa salvar) 
 
 Improvements:
     - make a class inside globals only with gobal variables (like a enum) http://stackoverflow.com/questions/702834/whats-the-common-practice-for-enums-in-python
@@ -55,7 +52,18 @@ Improvements:
     - Game
         - to pass through door reload in steps (animation_like)
         - arrows for directions
-        - move "on keypress"
+        - move "on keypress" 
+        - use number before walking (4 up, walks 4 points up)
 
 DONE:
     - Point
+    - Game:
+        -(OK) convert text -> object 
+        -(OK) convert obj -> text (str/repr) 
+        -(OK) start()
+        -(OK) load_robot()
+        -(OK) play()
+        -(OK) passes through a door
+    - Robot:
+        -(OK) make it walk
+            - move up /move down / move r/ move l

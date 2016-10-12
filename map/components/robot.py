@@ -1,6 +1,7 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class Robot."""
 from map_object import MapObject
+from point import Point
 import globals as globals_
 
 class Robot(MapObject):
@@ -27,26 +28,22 @@ class Robot(MapObject):
     def move_up(self):
         """
         """
-        print 'up'
-        pass
+        self._point.set_y(self.get_point().get_y()-1)
 
     def move_down(self):
         """
         """
-        print 'down'
-        pass
+        self._point.set_y(self.get_point().get_y()+1)
 
     def move_right(self):
         """
         """
-        print 'right'
-        pass
+        self._point.set_x(self.get_point().get_x()+1)
 
     def move_left(self):
         """
         """
-        print 'left'
-        pass
+        self._point.set_x(self.get_point().get_x()-1)
 
 if __name__ == '__main__':
     print raw_input()

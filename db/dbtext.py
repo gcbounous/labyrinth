@@ -7,10 +7,10 @@ import pickle
 @globals_.singleton
 class DBText():
     """
-    Defines a text data base. It saves all the maps users and saved games
-    Data structure:
-        maps : {map_name : [map_objects] }                  *without robot
-        users : { user_name: {map_name : [map_objects] } }  *with robot
+        Defines a text data base. It saves all the maps users and saved games
+        Data structure:
+            maps : {map_name : [map_objects] }                  *without robot
+            users : { user_name: {map_name : [map_objects] } }  *with robot
     """
 
     def __init__(self):

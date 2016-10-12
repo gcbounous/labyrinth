@@ -1,14 +1,16 @@
 # -*-coding:Utf-8 -*- #
 """This module contains the class Game."""
-from map.components.point import Point
-from map.components.door import Door
-from map.components.exit import Exit
-from map.components.floor import Floor
-from map.components.robot import Robot
-from map.components.start import Start
-from map.components.wall import Wall
+from map.components.point   import Point
+from map.components.door    import Door
+from map.components.exit    import Exit
+from map.components.floor   import Floor
+from map.components.robot   import Robot
+from map.components.start   import Start
+from map.components.wall    import Wall
 
 import globals as globals_
+
+import os
 
 class Game:
     """Defines a game object. Is the acctual game populated with it's map component objects."""
@@ -19,30 +21,37 @@ class Game:
         self._name = name
         self._robot = Robot(robot_point)
         self._game_map = list()
-        self._populate_map(text)
         self._status = globals_.STATUS['NEW']
 
-    def __repr__(self):
-        """
-        """
-        return "<Game: name {},\ntext: \n{}>".format(self._name, str(self))
+        self._populate_map(text)
 
-    def __str__(self):
+    def start(self):
         """
-            Tranforms the _game_map into text
-        """
-        game_text = ""
-        robot_point = self._robot.get_point()
-        row = 0
-        for obj in self._game_map:
-            if robot_point is not None and obj.get_point() == robot_point:
-                obj = self._robot
-            if obj.get_point().get_y() == row + 1:
-                game_text = "{}\n".format(game_text)
-                row += 1        
-            game_text = "{}{}".format(game_text, obj.get_symbol())
-        return game_text
+            Method that starts a game, loading the robot if needed.
+            It has the play loop as well.
 
+            return 
+                -the map if exit in the middle of the game or None, if game is finished
+        """
+        self._load_robot()
+        self._play()
+
+    def get_name(self):
+        """
+        """
+        return self._name
+
+    def get_status(self):
+        """
+        """
+        return self._status
+
+    def get_game_map(self):
+        """
+        """
+        return self._game_map
+
+    ####  private functions ###
     def _populate_map(self, text):
         """
             Populates _game_map with map_objects by reading a "map text"
@@ -75,14 +84,15 @@ class Game:
     def _load_robot(self):
         """
             It sets the robot point the same as start. and sets start as a floor
-            If it's a saved game (robot_point is not None and no start) it sdoes noothing (already set in self._robot)
+            If it's a saved game (robot_point is not None and no start) it does nothing (already set in self._robot)
         """
   
         for i, obj in enumerate(self._game_map):
             if isinstance(obj, Start):
                 point = obj.get_point()
-                self._robot.set_point(point)
                 self._game_map[i] = Floor(point)
+
+                self._robot.set_point(Point(point.get_x(),point.get_y()))
                 break
 
     def _get_object_by_point(self, point):
@@ -135,6 +145,9 @@ class Game:
                 clean terminal before print
                 print only until next door
         """
+        os.system("clear")
+        # os.system("setterm -cursor off")
+        # os.system("setterm -cursor on")
         print str(self)
 
     def _is_end_of_game(self):
@@ -143,8 +156,7 @@ class Game:
         """
         end_of_game = False
         robot_point = self._robot.get_point()
-        obj = self._get_object_by_point(Point(robot_point.get_x(), robot_point.get_y()-1))
-
+        obj = self._get_object_by_point(Point(robot_point.get_x(), robot_point.get_y()))
         if isinstance(obj, Exit):
             end_of_game = True
         return end_of_game
@@ -168,32 +180,32 @@ class Game:
             self._robot.walk(move)
             
             if self._is_end_of_game():
+                self._print_map()
+                print "---- YOU WIN!! ----"
+
                 self._status = globals_.STATUS['OVER']
                 break
 
-    def start(self):
+    def __repr__(self):
         """
-            Method that starts a game, loading the robot if needed.
-            It has the play loop as well.
-            @return the map if exit in the middle of the game or None, if game is finished
         """
-        self._load_robot()
-        self._play()
+        return "<Game: name {},\ntext: \n{}>".format(self._name, str(self))
 
-    def get_name(self):
+    def __str__(self):
         """
+            Tranforms the _game_map into text
         """
-        return self._name
-
-    def get_status(self):
-        """
-        """
-        return self._status
-
-    def get_game_map(self):
-        """
-        """
-        return self._game_map
+        game_text = ""
+        robot_point = self._robot.get_point()
+        row = 0
+        for obj in self._game_map:
+            if robot_point is not None and obj.get_point() == robot_point:
+                obj = self._robot
+            if obj.get_point().get_y() == row + 1:
+                game_text = "{}\n".format(game_text)
+                row += 1        
+            game_text = "{}{}".format(game_text, obj.get_symbol())
+        return game_text
 
 if __name__ == '__main__':
     print 'oi'
