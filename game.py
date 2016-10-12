@@ -11,6 +11,9 @@ from map.components.wall    import Wall
 import globals as globals_
 
 import os
+import sys
+import termios
+import tty
 
 class Game:
     """Defines a game object. Is the acctual game populated with it's map component objects."""
@@ -140,15 +143,26 @@ class Game:
     def _print_map(self):
         """
             Prints current game_map state 
-
-            TODO: 
-                clean terminal before print
-                print only until next door
         """
         os.system("clear")
         # os.system("setterm -cursor off")
         # os.system("setterm -cursor on")
         print str(self)
+
+    def _on_key_press(self):
+        """
+            Method that allows to the input on the key stroke without sowing in the terminal
+            Reference:
+                - http://code.activestate.com/recipes/134892-getch-like-unbuffered-character-reading-from-stdin/
+        """
+        stdin_file_descriptor = sys.stdin.fileno()
+        old_settings = termios.tcgetattr(stdin_file_descriptor)
+        try:
+            tty.setraw(stdin_file_descriptor)
+            ch = sys.stdin.read(1)
+        finally:
+            termios.tcsetattr(stdin_file_descriptor, termios.TCSADRAIN, old_settings)
+        return ch
 
     def _is_end_of_game(self):
         """
@@ -169,9 +183,9 @@ class Game:
 
         while True:
             self._print_map() 
-            move = raw_input()
+            move = self._on_key_press()
             while not self._move_is_valid(move):
-                move = raw_input()
+                move = self._on_key_press()
 
             if move == globals_.KEYS['QUIT']:
                 print 'quit'

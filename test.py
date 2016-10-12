@@ -6,7 +6,7 @@ from game import Game
 db = DBText()
 db.initialize()
 
-game  =  Game("lorilu", db.get_map('empty'))
+game  =  Game("lorilu", db.get_map('prison'))
 
 game.start()
 
