@@ -180,13 +180,16 @@ class Game:
             Game loop.
         """
         self._status = globals_.STATUS['IN_PLAY']
-        visible_map = self._load_new_room()
+        visible_map = ""
+        visible_map = self._load_new_room(visible_map)
 
         while True:
             self._print_map()
-            move = self._on_key_press()
+            # move = self._on_key_press()
+            move = raw_input()
             while not self._move_is_valid(move):
-                move = self._on_key_press()
+                # move = self._on_key_press()
+                move = raw_input()
 
             if move == globals_.KEYS['QUIT']:
                 print 'quit'
@@ -211,43 +214,90 @@ class Game:
         has_neighbors = []
         current_point = self._robot.get_point()
 
-        has_neighbors.append(current_point)
+        has_neighbors.append(self._get_object_by_point(Point(current_point.get_x(), current_point.get_y())))
         while True:
-            obj_up = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()-1))
-            obj_left = self._get_object_by_point(Point(current_point.get_x()-1, current_point.get_y()))
-            obj_down = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()+1))
-            obj_right = self._get_object_by_point(Point(current_point.get_x()+1, current_point.get_y()))
+            current_object = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()))
+            print current_object.get_point()
 
-            if self._is_visible(obj_up, visible_map, has_neighbors): # look up
-                has_neighbors.append(obj_up)
-            if self._is_visible(obj_left, visible_map, has_neighbors): # look left
-                has_neighbors.append(obj_left)
-            if self._is_visible(obj_down, visible_map, has_neighbors): # look down
-                has_neighbors.append(obj_down)
-            if self._is_visible(obj_right, visible_map, has_neighbors): # look right
-                has_neighbors.append(obj_right)
+            if isinstance(current_object, Door) or isinstance(current_object, Exit):
+                room_list.append(current_object)
+            else:
+                obj_up = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()-1))
+                obj_left = self._get_object_by_point(Point(current_point.get_x()-1, current_point.get_y()))
+                obj_down = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()+1))
+                obj_right = self._get_object_by_point(Point(current_point.get_x()+1, current_point.get_y()))
+# TODO: TEST and refactor, turning it into a function!!! 
+                if obj_up not in (has_neighbors or visible_map): # look up
+                    if isinstance(obj_up, Wall):
+                        room_list.append(obj_up)
+
+                        obj_point = obj_up.get_point()
+                        obj_up_right = self._get_object_by_point(Point(obj_point.get_x()+1, obj_point.get_y()))
+                        obj_up_left = self._get_object_by_point(Point(obj_point.get_x()-1, obj_point.get_y()))
+
+                        if isinstance(obj_up_right, Wall):
+                            room_list.append(obj_up_right)
+                        if isinstance(obj_up_right, Wall):
+                            room_list.append(obj_up_right)
+                    else:
+                        has_neighbors.append(obj_up)
+
+                if obj_left not in (has_neighbors or visible_map or room_list): # look left
+                    if isinstance(obj_left, Wall):
+                        room_list.append(obj_left)
+
+                        obj_point = obj_left.get_point()
+                        obj_left_up = self._get_object_by_point(Point(obj_point.get_x(), obj_point.get_y()-1))
+                        obj_left_down = self._get_object_by_point(Point(obj_point.get_x(), obj_point.get_y()+1))
+
+                        if isinstance(obj_left_up, Wall):
+                            room_list.append(obj_left_up)
+                        if isinstance(obj_left_down, Wall):
+                            room_list.append(obj_left_down)
+                    else:
+                        has_neighbors.append(obj_left)
+
+                if obj_down not in (has_neighbors or visible_map or room_list): # look down
+                    if isinstance(obj_down, Wall):
+                        room_list.append(obj_down)
+
+                        obj_point = obj_down.get_point()
+                        obj_down_right = self._get_object_by_point(Point(obj_point.get_x()+1, obj_point.get_y()))
+                        obj_down_left = self._get_object_by_point(Point(obj_point.get_x()-1, obj_point.get_y()))
+
+                        if isinstance(obj_down_right, Wall):
+                            room_list.append(obj_down_right)
+                        if isinstance(obj_down_right, Wall):
+                            room_list.append(obj_down_right)
+                    else:
+                        has_neighbors.append(obj_down)
+
+                if obj_right not in (has_neighbors or visible_map or room_list): # look right
+                    if isinstance(obj_right, Wall):
+                        room_list.append(obj_right)
+
+                        obj_point = obj_right.get_point()
+                        obj_right_up = self._get_object_by_point(Point(obj_point.get_x(), obj_point.get_y()-1))
+                        obj_right_down = self._get_object_by_point(Point(obj_point.get_x(), obj_point.get_y()+1))
+
+                        if isinstance(obj_right_up, Wall):
+                            room_list.append(obj_right_up)
+                        if isinstance(obj_right_down, Wall):
+                            room_list.append(obj_right_down)
+                    else:
+                        has_neighbors.append(obj_right)
 
             has_neighbors.pop(0)
             if len(has_neighbors) > 0:
-                current_point = has_neighbors[0]
-                room_list.append(self._get_object_by_point(Point(current_point.get_x(), current_point.get_y())))
+                current_point = has_neighbors[0].get_point()
+                room_list.append(current_object)
+            else:
+                break
 
-        # room_list.sort()
+        room_list.sort()
+        print [o.get_point() for o in room_list]
+        raw_input()
         return room_list
-
-    def _is_visible(self, obj, visible_map, already_looked):
-        """
-            Returns True if object is visible and can be added to the new room
-            param
-                - obj:              object to be tested
-                - visible_map:      list of the visible map objects
-                - already_looked:   list of the visible objects that have already been looked
-        """
-        if  obj not in already_looked and obj not in visible_map and
-            not isinstance(obj, Wall) and not isinstance(obj, Door) and not isinstance(obj, Exit):
-            return True
-        else:
-            return False
 
     def __repr__(self):
         """

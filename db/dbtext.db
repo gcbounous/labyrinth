@@ -5,29 +5,23 @@ p0
 S'maps'
 p2
 (dp3
-S'prison'
+S'lorilu'
 p4
-S'OOOOOOOOOOOOOOOOOOOO\nO_O . O    O .     O\nO.O O O    O O     O\nO O O O    O O     O\nO.O O .    O O     O\nO O O OOOOOO O     O\nO O O        O     O\nO O OOOOOOOOOO     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O.O        O     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO.O O        O     O\nO   O        O     *\nOOOOOOOOOOOOOOOOOOOO\n'
-p5
-sS'empty'
-p6
-S'OOOOOOOOOOOOOOOOOOOO\nO                  O\nO                  O\nO                  O\nO         _        O\nO                  O\nO                  O\nO                  O\nO                  *\nOOOOOOOOOOOOOOOOOOOO\n'
-p7
-sS'easy'
-p8
-S'OOOOOOOOOO\nO O    O O\nO . OO   O\nO O O    O\nO OOOO O.O\nO_O O    *\nO OOOOOO.O\nO O      O\nO O OOOOOO\nO . O    O\nOOOOOOOOOO\n'
-p9
-sS'lorilu'
-p10
 S'OOOOOOOOOO\nO        O\nO        O\nO        O\nO_       *\nO        O\nO        O\nO        O\nOOOOOOOOOO'
+p5
+sS'easy'
+p6
+S'OOOOOOOOOO\nO O    O O\nO . OO   O\nO O O    O\nO OOOO O.O\nO_O O    *\nO OOOOOO.O\nO O      O\nO O OOOOOO\nO . O    O\nOOOOOOOOOO\n'
+p7
+sS'empty'
+p8
+S'OOOOOOOOOOOOOOOOOOOO\nO                  O\nO                  O\nO                  O\nO         _        O\nO                  O\nO                  O\nO                  O\nO                  *\nOOOOOOOOOOOOOOOOOOOO\n'
+p9
+sS'prison'
+p10
+S'OOOOOOOOOOOOOOOOOOOO\nO_O . O    O .     O\nO.O O O    O O     O\nO O O O    O O     O\nO.O O .    O O     O\nO O O OOOOOO O     O\nO O O        O     O\nO O OOOOOOOOOO     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O.O        O     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO.O O        O     O\nO   O        O     *\nOOOOOOOOOOOOOOOOOOOO\n'
 p11
 ssS'users'
 p12
 (dp13
-S'Mari'
-p14
-(dp15
-sS'Gab'
-p16
-(dp17
-ssb.
+sb.

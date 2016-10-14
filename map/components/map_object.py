@@ -46,8 +46,9 @@ class MapObject:
     def __eq__(self, other):
         """
             Defines obj == other
+            it is equal is they are at the same place (have same point)
         """
-        return self._point == other._point and self._symbol == other._symbol and self._passable == other.passable
+        return self._point == other._point
 
     def __ne__(self, other):
         """
@@ -80,7 +81,7 @@ class MapObject:
         return self.__eq__(other) or self.__gt__(other)
 
 if __name__ == "__main__":
-    map_o = MapObject(Point(1,1), "\o")
-    print repr(map_o)
-    print str(map_o)
-    print map_o
+    map_1 = MapObject("lç", True, Point(1,1))
+    map_2 = MapObject("\o", True, Point(1,1))
+
+    print map_1 == map_2
