@@ -33,7 +33,7 @@ class Game:
             Method that starts a game, loading the robot if needed.
             It has the play loop as well.
 
-            return 
+            return
                 -the map if exit in the middle of the game or None, if game is finished
         """
         self._load_robot()
@@ -89,7 +89,7 @@ class Game:
             It sets the robot point the same as start. and sets start as a floor
             If it's a saved game (robot_point is not None and no start) it does nothing (already set in self._robot)
         """
-  
+
         for i, obj in enumerate(self._game_map):
             if isinstance(obj, Start):
                 point = obj.get_point()
@@ -142,7 +142,7 @@ class Game:
 
     def _print_map(self):
         """
-            Prints current game_map state 
+            Prints current game_map state
         """
         os.system("clear")
         # os.system("setterm -cursor off")
@@ -180,9 +180,10 @@ class Game:
             Game loop.
         """
         self._status = globals_.STATUS['IN_PLAY']
+        visible_map = self._load_new_room()
 
         while True:
-            self._print_map() 
+            self._print_map()
             move = self._on_key_press()
             while not self._move_is_valid(move):
                 move = self._on_key_press()
@@ -192,13 +193,61 @@ class Game:
                 break
 
             self._robot.walk(move)
-            
+
             if self._is_end_of_game():
                 self._print_map()
                 print "---- YOU WIN!! ----"
 
                 self._status = globals_.STATUS['OVER']
                 break
+
+    def _load_new_room(self, visible_map):
+        """
+            Method that loads the visible new room being limited by walls and doors.
+            param
+                - visible_map: list of the visible map objects
+        """
+        room_list = []
+        has_neighbors = []
+        current_point = self._robot.get_point()
+
+        has_neighbors.append(current_point)
+        while True:
+            obj_up = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()-1))
+            obj_left = self._get_object_by_point(Point(current_point.get_x()-1, current_point.get_y()))
+            obj_down = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()+1))
+            obj_right = self._get_object_by_point(Point(current_point.get_x()+1, current_point.get_y()))
+
+            if self._is_visible(obj_up, visible_map, has_neighbors): # look up
+                has_neighbors.append(obj_up)
+            if self._is_visible(obj_left, visible_map, has_neighbors): # look left
+                has_neighbors.append(obj_left)
+            if self._is_visible(obj_down, visible_map, has_neighbors): # look down
+                has_neighbors.append(obj_down)
+            if self._is_visible(obj_right, visible_map, has_neighbors): # look right
+                has_neighbors.append(obj_right)
+
+            has_neighbors.pop(0)
+            if len(has_neighbors) > 0:
+                current_point = has_neighbors[0]
+                room_list.append(self._get_object_by_point(Point(current_point.get_x(), current_point.get_y())))
+
+        # room_list.sort()
+        return room_list
+
+    def _is_visible(self, obj, visible_map, already_looked):
+        """
+            Returns True if object is visible and can be added to the new room
+            param
+                - obj:              object to be tested
+                - visible_map:      list of the visible map objects
+                - already_looked:   list of the visible objects that have already been looked
+        """
+        if  obj not in already_looked and obj not in visible_map and
+            not isinstance(obj, Wall) and not isinstance(obj, Door) and not isinstance(obj, Exit):
+            return True
+        else:
+            return False
 
     def __repr__(self):
         """
@@ -217,7 +266,7 @@ class Game:
                 obj = self._robot
             if obj.get_point().get_y() == row + 1:
                 game_text = "{}\n".format(game_text)
-                row += 1        
+                row += 1
             game_text = "{}{}".format(game_text, obj.get_symbol())
         return game_text
 

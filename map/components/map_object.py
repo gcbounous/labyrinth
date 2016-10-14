@@ -43,6 +43,42 @@ class MapObject:
         """
         return self._symbol
 
+    def __eq__(self, other):
+        """
+            Defines obj == other
+        """
+        return self._point == other._point and self._symbol == other._symbol and self._passable == other.passable
+
+    def __ne__(self, other):
+        """
+            Defines obj != other
+        """
+        return not self.__eq__(other)
+
+    def __lt__(self, other):
+        """
+            Defines obj < other
+        """
+        return self._point < other._point
+
+    def __gt__(self, other):
+        """
+            Defines point > other
+        """
+        return self._point > other._point
+
+    def __le__(self, other):
+        """
+            Defines point <= other
+        """
+        return self.__eq__(other) or self.__lt__(other)
+
+    def __ge__(self, other):
+        """
+            Defines point >= other
+        """
+        return self.__eq__(other) or self.__gt__(other)
+
 if __name__ == "__main__":
     map_o = MapObject(Point(1,1), "\o")
     print repr(map_o)

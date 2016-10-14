@@ -9,11 +9,43 @@ class Point:
     def __init__(self, x, y):
         """
             Constructor
-            @param:
+            param:
                 - x: x coordinate
                 - y: y coordinate
         """
         self.x = x
+        self.y = y
+
+    def get_x(self):
+        """
+            Getter (x)
+            return:
+                - self.x
+        """
+        return self.x
+
+    def get_y(self):
+        """
+            Getter (y)
+            return:
+                - self.y
+        """
+        return self.y
+
+    def set_x(self, x):
+        """
+            Setter (x)
+            param:
+                - x: new x coordinate
+        """
+        self.x = x
+
+    def set_y(self, y):
+        """
+            Setter (y)
+            param:
+                - y: new y coordinate
+        """
         self.y = y
 
     def __repr__(self):
@@ -40,38 +72,39 @@ class Point:
         """
         return not self.__eq__(other)
 
-    def get_x(self):
+    def __lt__(self, other):
         """
-            Getter (x)
-            @return:
-                - self.x
+            Defines point < other
         """
-        return self.x
+        if self.x < other.x:
+            return True
+        elif self.x == other.x and self.y < other.y:
+            return True
+        else:
+            return False
 
-    def get_y(self):
+    def __gt__(self, other):
         """
-            Getter (y)
-            @return:
-                - self.y
+            Defines point > other
         """
-        return self.y
+        if self.x > other.x:
+            return True
+        elif self.x == other.x and self.y > other.y:
+            return True
+        else:
+            return False
 
-    def set_x(self, x):
+    def __le__(self, other):
         """
-            Setter (x)
-            @param:
-                - x: new x coordinate
+            Defines point <= other
         """
-        self.x = x
+        return self.__eq__(other) or self.__lt__(other)
 
-    def set_y(self, y):
+    def __ge__(self, other):
         """
-            Setter (y)
-            @param:
-                - y: new y coordinate
+            Defines point >= other
         """
-        self.y = y
+        return self.__eq__(other) or self.__gt__(other)
 
 if __name__ == "__main__":
-    point = Point(1,1)
-    print point
+    p1 = Point(1,1)

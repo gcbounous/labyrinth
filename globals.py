@@ -24,7 +24,7 @@ KEYS = {
 STATUS = {
 		'IN_PLAY': 0,
 		'OVER': 1,
-		'NEW': 2	
+		'NEW': 2
 		}
 
 
@@ -33,14 +33,14 @@ STATUS = {
 """ singleton decorator -> can only create 1 instance"""
 def singleton(cls):
     instances = {}
-    
+
     def get_instance():
         if cls not in instances:
             instances[cls] = cls()
         return instances[cls]
 
     return get_instance
-    
+
 
 # DEFAULT MAPS #
 
