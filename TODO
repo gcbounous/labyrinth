@@ -1,5 +1,13 @@
 TODO:
 
+/!\ REFACTOR WITH GAME_MAP!! /!\
+
+Errors:
+    - create custom errors 
+        - PointError - point already exists in map/ point out of map bounds
+        - BoundError - map not closed by walls/exit/start
+        - Exit/StarError - exit not in wall bound/ more than one exit or start
+
 Documentation:
     - game
     - labyrinth
@@ -30,7 +38,6 @@ Map Editor/Creator
     - map checker (check if map has good caracteristics)
 
 DBSql:
-    -
 
 DBText:
     - refactor saved games
@@ -40,7 +47,8 @@ Improvements:
     - make a class inside globals only with gobal variables (like a enum) http://stackoverflow.com/questions/702834/whats-the-common-practice-for-enums-in-python
     - only show maze after door is opened once
     - score
-    - make one way doors 
+    - make one way doors (< > ^ v)
+    - 
 
     - Point:
         - order by x then y

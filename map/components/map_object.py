@@ -80,6 +80,11 @@ class MapObject:
         """
         return self.__eq__(other) or self.__gt__(other)
 
+    def __hash__(self):
+        """
+        """
+        return hash(self._point)
+
 if __name__ == "__main__":
     map_1 = MapObject("lç", True, Point(1,1))
     map_2 = MapObject("\o", True, Point(1,1))

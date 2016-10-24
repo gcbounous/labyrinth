@@ -106,5 +106,10 @@ class Point:
         """
         return self.__eq__(other) or self.__gt__(other)
 
+    def __hash__(self):
+        """
+        """
+        return hash((self.x,self.y))
+
 if __name__ == "__main__":
     p1 = Point(1,1)
