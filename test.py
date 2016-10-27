@@ -12,4 +12,5 @@ game  =  Game("lorilu", db.get_map('prison'))
 
 game.start()
 
-# TEST GAME functions
+
+# print sorted([obj.get_point() for obj in set([Door(Point(1,1)), Exit(Point(1,9)), Exit(Point(1,1)), Door(Point(1,2))])])

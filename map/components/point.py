@@ -76,9 +76,9 @@ class Point:
         """
             Defines point < other
         """
-        if self.x < other.x:
+        if self.y < other.y:
             return True
-        elif self.x == other.x and self.y < other.y:
+        elif self.y == other.y and self.x < other.x:
             return True
         else:
             return False
@@ -87,9 +87,9 @@ class Point:
         """
             Defines point > other
         """
-        if self.x > other.x:
+        if self.y > other.y:
             return True
-        elif self.x == other.x and self.y > other.y:
+        elif self.y == other.y and self.x > other.x:
             return True
         else:
             return False

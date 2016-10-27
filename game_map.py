@@ -59,16 +59,27 @@ class GameMap:
         self._game_map.sort()
         self._clean_map()
 
-    def get_new_room(self):
+    def get_new_room(self, visible_map, last_move = None):
         """
             Method that loads the visible new room being limited by walls and doors.
             param
                 - visible_map: list of the visible map objects
 
         """
+        #TODO: DEBUG!!!! (principalement l'affichage)
+        visible_map = visible_map.get_game_map()
         room_list = []
         has_neighbors = []
-        current_point = self._robot.get_point()
+        current_point = Point(self._robot.get_point().get_x(), self._robot.get_point().get_y())
+
+        if last_move == globals_.KEYS['UP']:
+            current_point.set_y(current_point.get_y()-1)
+        elif last_move == globals_.KEYS['DOWN']:
+            current_point.set_y(current_point.get_y()+1)
+        elif last_move == globals_.KEYS['RIGHT']:
+            current_point.set_x(current_point.get_x()+1)
+        elif last_move == globals_.KEYS['LEFT']:
+            current_point.set_x(current_point.get_x()-1)
 
         has_neighbors.append(self._get_object_by_point(Point(current_point.get_x(), current_point.get_y())))
         while True:
@@ -81,8 +92,10 @@ class GameMap:
                 obj_left = self._get_object_by_point(Point(current_point.get_x()-1, current_point.get_y()))
                 obj_down = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()+1))
                 obj_right = self._get_object_by_point(Point(current_point.get_x()+1, current_point.get_y()))
-        # TODO: TEST and refactor, turning it into a function!!!
-                if obj_up not in (has_neighbors or visible_map): # look up
+
+                unwanted_objects = has_neighbors + visible_map + room_list
+
+                if obj_up not in (unwanted_objects): # look up
                     if isinstance(obj_up, Wall):
                         room_list.append(obj_up)
 
@@ -97,7 +110,7 @@ class GameMap:
                     else:
                         has_neighbors.append(obj_up)
 
-                if obj_left not in (has_neighbors or visible_map): # look left
+                if obj_left not in (unwanted_objects): # look left
                     if isinstance(obj_left, Wall):
                         room_list.append(obj_left)
 
@@ -112,7 +125,7 @@ class GameMap:
                     else:
                         has_neighbors.append(obj_left)
 
-                if obj_down not in (has_neighbors or visible_map): # look down
+                if obj_down not in (unwanted_objects): # look down
                     if isinstance(obj_down, Wall):
                         room_list.append(obj_down)
 
@@ -127,7 +140,7 @@ class GameMap:
                     else:
                         has_neighbors.append(obj_down)
 
-                if obj_right not in (has_neighbors or visible_map): # look right
+                if obj_right not in (unwanted_objects): # look right
                     if isinstance(obj_right, Wall):
                         room_list.append(obj_right)
 
@@ -150,7 +163,6 @@ class GameMap:
                 break
 
         room_list = list(set(room_list))
-        room_list.sort()
         return room_list
 
     def move_is_valid(self, move):
@@ -186,7 +198,6 @@ class GameMap:
 
         return valid_move
 
-    # TEST
     def print_map(self):
         """
             Prints current game_map state
@@ -209,17 +220,30 @@ class GameMap:
             end_of_game = True
         return end_of_game
 
+    def robot_at_door(self):
+        """
+            Returns True if robot is currently over a Door
+        """
+        current_point = self._robot.get_point()
+        current_object = self._get_object_by_point(current_point)
+        if isinstance(current_object, Door):
+            return True
+        else:
+            return False
+
     ####  private functions ###
     def _clean_map(self):
         """
             Cleans doubles
         """
-        # TODO
-        pass
+        self._game_map = list(set(self._game_map))
+        self._game_map.sort()
 
     def _populate(self, text):
         """
             Populates _game_map with map_objects by reading a "map text"
+            @param text: text describing map with mep object symbols
+
         """
         self._game_map = []
         x = 0

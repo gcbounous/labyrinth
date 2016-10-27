@@ -19,7 +19,7 @@ class DBText():
         """
         self.maps = {}
         self.users = {}
- 
+
     def initialize(self):
         """
             Method that populates the object attributes
@@ -27,8 +27,8 @@ class DBText():
         if os.path.isfile(globals_.DB_TEXT_PATH):
             self._load_db()
         else:
-            self._load_default_maps()
             self._load_personal_maps()
+            self._load_default_maps()
             self._write_db()
 
     def get_all_maps(self):
