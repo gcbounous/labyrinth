@@ -34,7 +34,7 @@ class Game:
             return
                 -the map if exit in the middle of the game or None, if game is finished
         """
-        self._game_map.load_robot()        
+        self._game_map.load_robot()
         os.system("setterm -cursor off")
         self._play()
         os.system("setterm -cursor on")
@@ -76,14 +76,13 @@ class Game:
         """
         self._status = globals_.STATUS['IN_PLAY']
         #  append new room!!
-        visible_map = GameMap()
+        visible_map = GameMap(robot_point = self._game_map.get_robot_point())
         visible_map.append(self._game_map.get_new_room())
 
         while True:
-            os.system("clear")
-            visible_map.print_map()
+            self._print_map(visible_map)
 
-            move = self._on_key_press() 
+            move = self._on_key_press()
             # move = raw_input() #input windows
             while not self._game_map.move_is_valid(move):
                 move = self._on_key_press()
@@ -96,10 +95,20 @@ class Game:
             self._game_map.move_robot(move)
 
             if self._game_map.is_end_of_game():
-                self._print_map()
+                self._print_map(visible_map)
                 self._status = globals_.STATUS['OVER']
                 print "---- YOU WIN!! ----"
                 break
+
+    def _print_map(self, visible_map):
+        """
+            Cleans terminal and prints map
+        """
+        os.system("clear")
+        visible_map.print_map()
+        print visible_map._game_map
+        print ""
+        self._game_map.print_map()
 
     def __repr__(self):
         """
