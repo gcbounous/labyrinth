@@ -13,8 +13,8 @@ import globals as globals_
 
 import os
 import sys
-# import termios
-# import tty
+import termios
+import tty
 
 class Game:
     """Defines a game object. Is the acctual game populated with it's map component objects."""
@@ -35,9 +35,9 @@ class Game:
                 -the map if exit in the middle of the game or None, if game is finished
         """
         self._game_map.load_robot()
-        # os.system("setterm -cursor off")
+        os.system("setterm -cursor off")
         self._play()
-        # os.system("setterm -cursor on")
+        os.system("setterm -cursor on")
 
     def get_name(self):
         """
@@ -75,18 +75,18 @@ class Game:
             Game loop.
         """
         self._status = globals_.STATUS['IN_PLAY']
-        #  append new room!!
+
         visible_map = GameMap(robot_point = self._game_map.get_robot_point())
         visible_map.append(self._game_map.get_new_room(visible_map))
 
         while True:
             self._print_map(visible_map)
 
-            # move = self._on_key_press()
-            move = raw_input() # windows
+            move = self._on_key_press()
+            # move = raw_input() # windows
             while not self._game_map.move_is_valid(move):
-                # move = self._on_key_press()
-                move = raw_input() # windows
+                move = self._on_key_press()
+                # move = raw_input() # windows
 
             if move == globals_.KEYS['QUIT']:
                 print 'quit'
@@ -107,8 +107,8 @@ class Game:
         """
             Cleans terminal and prints map
         """
-        # os.system("clear")
-        os.system("cls") # windows
+        os.system("clear")
+        # os.system("cls") # windows
         visible_map.print_map()
         print ""
         self._game_map.print_map()

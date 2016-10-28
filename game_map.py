@@ -7,6 +7,7 @@ from map.components.floor   import Floor
 from map.components.robot   import Robot
 from map.components.start   import Start
 from map.components.wall    import Wall
+from map.components.empty   import Empty
 
 import globals as globals_
 
@@ -24,6 +25,7 @@ class GameMap:
             self._populate(map_input)
         elif isinstance(map_input, list):
             self._game_map = map_input
+            self._game_map.sort()
         elif map_input is None:
             pass
         else:
@@ -57,7 +59,8 @@ class GameMap:
         """
         self._game_map += obj_list
         self._game_map.sort()
-        self._clean_map()
+        self.clean_map()
+        self._fill_map()
 
     def get_new_room(self, visible_map, last_move = None):
         """
@@ -67,7 +70,9 @@ class GameMap:
 
         """
         #TODO: DEBUG!!!! (principalement l'affichage)
+        visible_map.clean_map()
         visible_map = visible_map.get_game_map()
+
         room_list = []
         has_neighbors = []
         current_point = Point(self._robot.get_point().get_x(), self._robot.get_point().get_y())
@@ -85,14 +90,23 @@ class GameMap:
         while True:
             current_object = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()))
 
+            obj_up = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()-1))
+            obj_left = self._get_object_by_point(Point(current_point.get_x()-1, current_point.get_y()))
+            obj_down = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()+1))
+            obj_right = self._get_object_by_point(Point(current_point.get_x()+1, current_point.get_y()))
+
             if isinstance(current_object, Door) or isinstance(current_object, Exit):
                 room_list.append(current_object)
-            else:
-                obj_up = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()-1))
-                obj_left = self._get_object_by_point(Point(current_point.get_x()-1, current_point.get_y()))
-                obj_down = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()+1))
-                obj_right = self._get_object_by_point(Point(current_point.get_x()+1, current_point.get_y()))
 
+                if isinstance(obj_up, Wall):
+                    room_list.append(obj_up)
+                if isinstance(obj_left, Wall):
+                    room_list.append(obj_left)
+                if isinstance(obj_down, Wall):
+                    room_list.append(obj_down)
+                if isinstance(obj_right, Wall):
+                    room_list.append(obj_right)
+            else:
                 unwanted_objects = has_neighbors + visible_map + room_list
 
                 if obj_up not in (unwanted_objects): # look up
@@ -231,12 +245,28 @@ class GameMap:
         else:
             return False
 
-    ####  private functions ###
-    def _clean_map(self):
+    def clean_map(self):
         """
-            Cleans doubles
+            Cleans doubles and empty objects
         """
+        for i,obj in enumerate(self._game_map):
+            if isinstance(obj, Empty):
+                self._game_map.pop(i)
         self._game_map = list(set(self._game_map))
+        self._game_map.sort()
+
+    #### private functions ###
+    def _fill_map(self):
+        """
+            fills map with empty object where there is nothing
+        """
+        x_bound, y_bound = self._get_bounds()
+
+        for x in xrange(x_bound+1):
+            for y in xrange(y_bound+1):
+                empty = Empty(Point(x,y))
+                if empty not in self._game_map:
+                    self._game_map.append(empty)
         self._game_map.sort()
 
     def _populate(self, text):
@@ -269,6 +299,7 @@ class GameMap:
             else:
                 self._game_map.append(Floor(point))
                 x += 1
+        self._game_map.sort()
 
     def _get_object_by_point(self, point):
         """
@@ -278,6 +309,14 @@ class GameMap:
             if point == obj.get_point():
                 return obj
         return None
+
+    def _get_bounds(self):
+        """
+            Returns the x and y bounds of the map
+                obs: self._game_map is expected to be sorted
+        """
+        last_point = self._game_map[-1].get_point()
+        return (last_point.get_x(), last_point.get_y())
 
     def __repr__(self):
         """
