@@ -1,12 +1,6 @@
 # -*-coding:Utf-8 -*- #
 """This module contains the class Game."""
 from map.components.point   import Point
-from map.components.door    import Door
-from map.components.exit    import Exit
-from map.components.floor   import Floor
-from map.components.robot   import Robot
-from map.components.start   import Start
-from map.components.wall    import Wall
 from game_map               import GameMap
 
 import globals as globals_
@@ -24,7 +18,7 @@ class Game:
         """
         self._name = name
         self._game_map = GameMap(text, robot_point)
-        self._status = globals_.STATUS['NEW']
+        self._status = globals_.Status.NEW
 
     def start(self):
         """
@@ -74,10 +68,11 @@ class Game:
         """
             Game loop.
         """
-        self._status = globals_.STATUS['IN_PLAY']
+        self._status = globals_.Status.IN_PLAY
 
         visible_map = GameMap(robot_point = self._game_map.get_robot_point())
         visible_map.append(self._game_map.get_new_room(visible_map))
+        known_door_points = list()
 
         while True:
             self._print_map(visible_map)
@@ -95,11 +90,15 @@ class Game:
             self._game_map.move_robot(move)
 
             if self._game_map.robot_at_door():
-                visible_map.append(self._game_map.get_new_room(visible_map, move))
+                current_point = self._game_map.get_robot_point()
+                current_point = Point(current_point.get_x(),current_point.get_y())
+                if current_point not in known_door_points:
+                    visible_map.append(self._game_map.get_new_room(visible_map, move))
+                    known_door_points.append(current_point)
 
             if self._game_map.is_end_of_game():
                 self._print_map(visible_map)
-                self._status = globals_.STATUS['OVER']
+                self._status = globals_.Status.OVER
                 print "---- YOU WIN!! ----"
                 break
 
@@ -110,8 +109,6 @@ class Game:
         os.system("clear")
         # os.system("cls") # windows
         visible_map.print_map()
-        print ""
-        self._game_map.print_map()
 
     def __repr__(self):
         """

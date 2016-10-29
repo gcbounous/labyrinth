@@ -5,23 +5,27 @@ p0
 S'maps'
 p2
 (dp3
-S'prison'
+S'Maricota'
 p4
-S'OOOOOOOOOOOOOOOOOOOO\nO_O . O    O .     O\nO.O O O    O O     O\nO O O O    O O     O\nO.O O .    O O     O\nO O O OOOOOO O     O\nO O O        O     O\nO O OOOOOOOOOO     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O.O        O     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO.O O        O     O\nO   O        O     *\nOOOOOOOOOOOOOOOOOOOO\n'
+S'OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\nO_    O    .       O         .        . O\nOOOOO O OO.OO OOOO O.OOOO    O OOOOOO.O O\nO   O O O   O O  . O    OOOO.OOO    . O O\nO O O O OOO O O  OOOOOO O  O     OOOO O O\nO O . O   O O OO O .    O OOOOOOOO  O O O\nO OOO.OOO O O  O O OOOOOO.OOO .     . O O\nO  O    . O .  O O O  .       OOOOOOO . O\nO  O    OOO OOOO O O OO OOOOO .     OOOOO\nO OOOOO.O   OO O O O OO O . O OOOOO .   O\nO     O      O .   O .  O O O .     OOO O\nOOOOO OOOOOOOO OOOOO OOOO O O OOOOOOO O O\nO   O O    O       O O O  O O O  . .  O O\nO   O . OO OOOOOOO O O O  . O O  O O  O O\nO O O.OOOO O       O O O.OOOO OOOO.OOOO O\nO OOO O  . O O.OOOOO O      . .  O    . O\nO     O  O O O O     O.O.OOOO.OO O    O.O\nOOOOOOO  O O O O O   O O   O   O OOOOOO O\nO        O . O   OOOOO O OOOOO . O      O\nO   O.OOOO.O O.OOO  O  O  O O  O.OOOOOOOO\nO.OOO      O O      O OO  O O OO   O    O\nO   OOOOOOOO OOOOOO.O OOO O O.OOOO O O  *\nO          O        O .   O      O . OOOO\nOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n'
 p5
-sS'easy'
+sS'prison'
 p6
-S'OOOOOOOOOO\nO O    O O\nO . OO   O\nO O O    O\nO OOOO O.O\nO_O O    *\nO OOOOOO.O\nO O      O\nO O OOOOOO\nO . O    O\nOOOOOOOOOO\n'
+S'OOOOOOOOOOOOOOOOOOOO\nO_O . O    O .     O\nO.O O O    O O     O\nO O O O    O O     O\nO.O O .    O O     O\nO O O OOOOOO O     O\nO O O        O     O\nO O OOOOOOOOOO     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O.O        O     O\nO.O .        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO O O        O     O\nO.O O        O     O\nO   O        O     *\nOOOOOOOOOOOOOOOOOOOO\n'
 p7
-sS'empty'
+sS'easy'
 p8
-S'OOOOOOOOOOO\nO         O\nO         O\nO         O\nO         O\nO    _    O\nO         O\nO         O\nO         O\nO         *\nOOOOOOOOOOO\n'
+S'OOOOOOOOOO\nO O    O O\nO . OO   O\nO O O    O\nO OOOO O.O\nO_O O    *\nO OOOOOO.O\nO O      O\nO O OOOOOO\nO . O    O\nOOOOOOOOOO\n'
 p9
-sS'lorilu'
+sS'empty'
 p10
-S'OOOOOOOOOO\nO        O\nO        O\nO        O\nO_       *\nO        O\nO        O\nO        O\nOOOOOOOOOO'
+S'OOOOOOOOOOO\nO         O\nO         O\nO         O\nO         O\nO    _    O\nO         O\nO         O\nO         O\nO         *\nOOOOOOOOOOO\n'
 p11
-ssS'users'
+sS'lorilu'
 p12
-(dp13
+S'OOOOOOOOOO\nO        O\nO        O\nO        O\nO_       *\nO        O\nO        O\nO        O\nOOOOOOOOOO'
+p13
+ssS'users'
+p14
+(dp15
 sb.

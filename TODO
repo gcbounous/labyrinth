@@ -1,7 +1,5 @@
 TODO:
 
-/!\ REFACTOR WITH GAME_MAP!! /!\
-
 Errors:
     - create custom errors 
         - PointError - point already exists in map/ point out of map bounds
@@ -50,16 +48,8 @@ Improvements:
     - make one way doors (< > ^ v)
     - 
 
-    - Point:
-        - order by x then y
-
-    - Map_object:
-        - order by point
-
     - Game
-        - to pass through door reload in steps (animation_like)
         - arrows for directions
-        - move "on keypress" 
         - use number before walking 
 
 DONE:
@@ -71,6 +61,9 @@ DONE:
         -(OK) load_robot()
         -(OK) play()
         -(OK) passes through a door
+        -(OK) to pass through door reload in steps (animation_like)
+        -(OK) move "on keypress" 
+        
     - Robot:
         -(OK) make it walk
             - move up /move down / move r/ move l

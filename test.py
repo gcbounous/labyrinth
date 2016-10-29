@@ -8,7 +8,8 @@ from map.components.exit    import Exit
 
 db = DBText()
 db.initialize()
-game  =  Game("lorilu", db.get_map('prison'))
+
+game  =  Game("lorilu", db.get_map("Maricota"))
 
 game.start()
 

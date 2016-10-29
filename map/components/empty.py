@@ -8,7 +8,7 @@ class Empty(MapObject):
     def __init__(self, point = None):
         """
         """        
-        MapObject.__init__(self, "e", False, point)
+        MapObject.__init__(self, " ", False, point)
 
 
 if __name__ == '__main__':

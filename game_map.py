@@ -69,7 +69,6 @@ class GameMap:
                 - visible_map: list of the visible map objects
 
         """
-        #TODO: DEBUG!!!! (principalement l'affichage)
         visible_map.clean_map()
         visible_map = visible_map.get_game_map()
 
@@ -89,6 +88,7 @@ class GameMap:
         has_neighbors.append(self._get_object_by_point(Point(current_point.get_x(), current_point.get_y())))
         while True:
             current_object = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()))
+            room_list.append(current_object)
 
             obj_up = self._get_object_by_point(Point(current_point.get_x(), current_point.get_y()-1))
             obj_left = self._get_object_by_point(Point(current_point.get_x()-1, current_point.get_y()))
@@ -109,7 +109,7 @@ class GameMap:
             else:
                 unwanted_objects = has_neighbors + visible_map + room_list
 
-                if obj_up not in (unwanted_objects): # look up
+                if obj_up not in unwanted_objects: # look up                 
                     if isinstance(obj_up, Wall):
                         room_list.append(obj_up)
 
@@ -119,12 +119,12 @@ class GameMap:
 
                         if isinstance(obj_up_right, Wall):
                             room_list.append(obj_up_right)
-                        if isinstance(obj_up_right, Wall):
-                            room_list.append(obj_up_right)
+                        if isinstance(obj_up_left, Wall):
+                            room_list.append(obj_up_left)
                     else:
                         has_neighbors.append(obj_up)
 
-                if obj_left not in (unwanted_objects): # look left
+                if obj_left not in unwanted_objects: # look left
                     if isinstance(obj_left, Wall):
                         room_list.append(obj_left)
 
@@ -139,7 +139,7 @@ class GameMap:
                     else:
                         has_neighbors.append(obj_left)
 
-                if obj_down not in (unwanted_objects): # look down
+                if obj_down not in unwanted_objects: # look down
                     if isinstance(obj_down, Wall):
                         room_list.append(obj_down)
 
@@ -149,12 +149,12 @@ class GameMap:
 
                         if isinstance(obj_down_right, Wall):
                             room_list.append(obj_down_right)
-                        if isinstance(obj_down_right, Wall):
-                            room_list.append(obj_down_right)
+                        if isinstance(obj_down_left, Wall):
+                            room_list.append(obj_down_left)
                     else:
                         has_neighbors.append(obj_down)
 
-                if obj_right not in (unwanted_objects): # look right
+                if obj_right not in unwanted_objects: # look right
                     if isinstance(obj_right, Wall):
                         room_list.append(obj_right)
 
@@ -172,7 +172,6 @@ class GameMap:
             has_neighbors.pop(0)
             if len(has_neighbors) > 0:
                 current_point = has_neighbors[0].get_point()
-                room_list.append(current_object)
             else:
                 break
 
@@ -249,9 +248,10 @@ class GameMap:
         """
             Cleans doubles and empty objects
         """
-        for i,obj in enumerate(self._game_map):
+
+        for obj in sorted(self._game_map, reverse = True):
             if isinstance(obj, Empty):
-                self._game_map.pop(i)
+                self._game_map.remove(obj)
         self._game_map = list(set(self._game_map))
         self._game_map.sort()
 
@@ -315,8 +315,17 @@ class GameMap:
             Returns the x and y bounds of the map
                 obs: self._game_map is expected to be sorted
         """
-        last_point = self._game_map[-1].get_point()
-        return (last_point.get_x(), last_point.get_y())
+        x_max = 0
+        y_max = 0
+
+        for obj in self._game_map:
+            point = obj.get_point()
+            if point.get_x() > x_max:
+                x_max =  point.get_x()
+            if point.get_y() > y_max:
+                y_max =  point.get_y()
+
+        return (x_max, y_max)
 
     def __repr__(self):
         """
