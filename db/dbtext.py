@@ -9,10 +9,9 @@ class DBText():
     """
         Defines a text data base. It saves all the maps users and saved games
         Data structure:
-            maps : {map_name : [map_objects] }                  *without robot
-            users : { user_name: {map_name : [map_objects] } }  *with robot
+            maps : {map_name : map_te }                       *without robot
+            users : { user_name: {map_name : game_object } }  *with robot
     """
-
     def __init__(self):
         """
             Constructor that initializes the data-base object
@@ -78,17 +77,17 @@ class DBText():
                 - user_name
                 - game_name
         """
-        game_text = None
+        game = None
         self._load_db()
         if user_name in self.users.keys():
             user = self.users[user_name]
             if game_name in user.keys():
-                game_text = user[game_name]
+                game = user[game_name]
             else:
                 print "Game '{}' doesn't exist.".format(game_name)
         else:
             print "User-id '{}' doesn't exist.".format(user_name)
-        return game_text
+        return game
 
     def new_user(self, user_name):
         """
@@ -128,17 +127,17 @@ class DBText():
             print "Map with name '{}' already exists.".format(map_name)
             return False
 
-    def save_user_game(self, user_name, game_name, game_text):
+    def save_user_game(self, user_name, game_name, game):
         """
             Method that saves a user game in play
             params:
                 - user_name
                 - game_name
-                - game_text
+                - game
         """
         self._load_db()
         if user_name in self.users.keys():
-            self.users[user_name][game_name] = game_text
+            self.users[user_name][game_name] = game
             self._write_db()
         else:
             print "User-id '{}' doesn't exist.".format(user_name)

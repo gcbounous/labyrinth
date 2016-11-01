@@ -20,7 +20,6 @@ Documentation:
 
 Labyrinth:
     - load maps
-    - make choice (if in middle of game ask to continue to play or not/ give list of unfinished games)
     - load game (old or new)
     - play
     - check for game status (if in_game ask to save)

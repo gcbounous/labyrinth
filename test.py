@@ -6,6 +6,8 @@ from map.components.point   import Point
 from map.components.door    import Door
 from map.components.exit    import Exit
 
+from labyrinth import Labyrinth
+
 db = DBText()
 db.initialize()
 
@@ -13,5 +15,4 @@ game  =  Game("lorilu", db.get_map("Maricota"))
 
 game.start()
 
-
-# print sorted([obj.get_point() for obj in set([Door(Point(1,1)), Exit(Point(1,9)), Exit(Point(1,1)), Door(Point(1,2))])])
+# lab = Labyrinth()
