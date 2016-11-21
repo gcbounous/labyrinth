@@ -11,8 +11,9 @@ from labyrinth import Labyrinth
 db = DBText()
 db.initialize()
 
-game  =  Game("lorilu", db.get_map("Maricota"))
+print db.get_all_users()
+# game  =  Game("lorilu", db.get_map("Maricota"))
 
-game.start()
+# game.start()
 
 # lab = Labyrinth()

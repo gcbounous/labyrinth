@@ -49,14 +49,16 @@ class Game:
         """
         return self._game_map
 
-    def print_map(self):
+    def print_map(self, visible_only = True):
         """
             Cleans terminal and prints map
         """
         os.system("clear")
         # os.system("cls") # windows
-        self._visible_map.print_map()
-        # self._game_map.print_map()
+        if visible_only:
+            self._visible_map.print_map()
+        else:
+            self._game_map.print_map()
 
     ####  private functions ###
     def _on_key_press(self):
