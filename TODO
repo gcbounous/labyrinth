@@ -66,3 +66,9 @@ DONE:
     - Robot:
         -(OK) make it walk
             - move up /move down / move r/ move l
+
+    Labyrinth:
+        - load maps
+        - load game (old or new)
+        - play
+        - check for

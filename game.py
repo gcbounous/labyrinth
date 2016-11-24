@@ -27,8 +27,9 @@ class Game:
             It leaves the game ready to be played.
         """
         self._game_map.load_robot()
-        self._visible_map = self._visible_map = GameMap(robot_point = self._game_map.get_robot_point())
-        self._visible_map.append(self._game_map.get_new_room(self._visible_map))
+        if self._visible_map is None:
+            self._visible_map = GameMap(robot_point = self._game_map.get_robot_point())
+            self._visible_map.append(self._game_map.get_new_room(self._visible_map))
 
         os.system("setterm -cursor off")
         self._play()
@@ -85,6 +86,7 @@ class Game:
 
         while True:
             self.print_map()
+            self._print_keys()
 
             move = self._on_key_press()
             # move = raw_input() # windows
@@ -110,6 +112,18 @@ class Game:
                 self._status = globals_.Status.OVER
                 print "---- YOU WIN!! ----"
                 break
+
+    def _print_keys(self):
+        """
+            Prints the keys to be used to play
+        """
+        keys = ""
+        for name, k in globals_.KEYS.items():
+            if name != 'QUIT':
+                keys = "{}\n{}\t-\t[{}]".format(keys, name, k)
+        keys = "{}\n{}\t-\t[{}]".format(keys, 'QUIT', globals_.KEYS['QUIT'])
+
+        print keys 
 
     def __repr__(self):
         """

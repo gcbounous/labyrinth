@@ -10,7 +10,7 @@ import os
 
 class Labyrinth():
 
-    """Defines a wall object."""
+    """Defines the main class wich the game takes place."""
 
     def __init__(self, db = "text"):
         """
@@ -32,6 +32,9 @@ class Labyrinth():
     def _login(self):
         """
         """
+        os.system("clear")
+        # os.system("cls") # windows
+        
         self._user_name = raw_input("Type your user name: ").upper()
         all_users_dict = self._db.get_all_users()
 
@@ -152,14 +155,13 @@ class Labyrinth():
 
                     menu_ok = self._load_map_and_play(game)
 
-            quit = function()
-            return quit
+            return False
 
     def _load_map_and_play(self, game):
         """
             return True if wants to return to main menu
         """
-        print "Load this map? (Y/N)"
+        print "\nLoad this map? (Y/N)"
         menu = raw_input().upper()
         while menu not in "YN" or len(menu) != 1:
             print "Load this map? (Y/N)"
@@ -173,10 +175,10 @@ class Labyrinth():
             if game_status == globals_.Status.IN_PLAY:
                 self._save_game(game)
 
-            print "{}, play another game? (Y/N)".format(self._user_name)
+            print "Load another game? (Y/N)".format(self._user_name)
             menu = raw_input().upper()
             while menu not in "YN" or len(menu) != 1:
-                print "{}, play another game? (Y/N)".format(self._user_name)
+                print "Load another game? (Y/N)".format(self._user_name)
                 menu = raw_input().upper()
 
             if menu == 'Y':
