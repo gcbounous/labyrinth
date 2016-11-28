@@ -45,7 +45,7 @@ class GameMap:
     def load_robot(self):
         """
             It sets the robot point the same as start. and sets start as a floor
-            If it's a saved game (has no start) or a empty map it does nothing.
+            If it's a saved game (has no start) or an empty map it does nothing.
         """
         for i, obj in enumerate(self._game_map):
             if isinstance(obj, Start):

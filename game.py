@@ -19,16 +19,18 @@ class Game:
         self._name = name
         self._game_map = GameMap(text, robot_point)
         self._status = globals_.Status.NEW
+        self._visible_map = None
 
     def start(self):
         """
             Method that starts a game, loading the robot if needed.
-            It has the play loop as well.
-
-            return
-                -the map if exit in the middle of the game or None, if game is finished
+            It leaves the game ready to be played.
         """
         self._game_map.load_robot()
+        if self._visible_map is None:
+            self._visible_map = GameMap(robot_point = self._game_map.get_robot_point())
+            self._visible_map.append(self._game_map.get_new_room(self._visible_map))
+
         os.system("setterm -cursor off")
         self._play()
         os.system("setterm -cursor on")
@@ -47,6 +49,17 @@ class Game:
         """
         """
         return self._game_map
+
+    def print_map(self, visible_only = True):
+        """
+            Cleans terminal and prints map
+        """
+        os.system("clear")
+        # os.system("cls") # windows
+        if visible_only:
+            self._visible_map.print_map()
+        else:
+            self._game_map.print_map()
 
     ####  private functions ###
     def _on_key_press(self):
@@ -69,13 +82,11 @@ class Game:
             Game loop.
         """
         self._status = globals_.Status.IN_PLAY
-
-        visible_map = GameMap(robot_point = self._game_map.get_robot_point())
-        visible_map.append(self._game_map.get_new_room(visible_map))
         known_door_points = list()
 
         while True:
-            self._print_map(visible_map)
+            self.print_map()
+            self._print_keys()
 
             move = self._on_key_press()
             # move = raw_input() # windows
@@ -93,22 +104,26 @@ class Game:
                 current_point = self._game_map.get_robot_point()
                 current_point = Point(current_point.get_x(),current_point.get_y())
                 if current_point not in known_door_points:
-                    visible_map.append(self._game_map.get_new_room(visible_map, move))
+                    self._visible_map.append(self._game_map.get_new_room(self._visible_map, move))
                     known_door_points.append(current_point)
 
             if self._game_map.is_end_of_game():
-                self._print_map(visible_map)
+                self.print_map()
                 self._status = globals_.Status.OVER
                 print "---- YOU WIN!! ----"
                 break
 
-    def _print_map(self, visible_map):
+    def _print_keys(self):
         """
-            Cleans terminal and prints map
+            Prints the keys to be used to play
         """
-        os.system("clear")
-        # os.system("cls") # windows
-        visible_map.print_map()
+        keys = ""
+        for name, k in globals_.KEYS.items():
+            if name != 'QUIT':
+                keys = "{}\n{}\t-\t[{}]".format(keys, name, k)
+        keys = "{}\n{}\t-\t[{}]".format(keys, 'QUIT', globals_.KEYS['QUIT'])
+
+        print keys 
 
     def __repr__(self):
         """
