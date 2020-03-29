@@ -4,7 +4,7 @@ from game import Game
 from db.dbtext import DBText
 from db.dbsql import DBSql
 
-import globals as globals_
+import utils.globals as globals_
 
 import os
 

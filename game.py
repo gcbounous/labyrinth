@@ -2,13 +2,9 @@
 """This module contains the class Game."""
 from map.components.point   import Point
 from game_map               import GameMap
+from utils.getch          import getch
 
-import globals as globals_
-
-import os
-import sys
-import termios
-import tty
+import utils.globals as globals_
 
 class Game:
     """Defines a game object. Is the acctual game populated with it's map component objects."""
@@ -64,18 +60,9 @@ class Game:
     ####  private functions ###
     def _on_key_press(self):
         """
-            Method that allows to the input on the key stroke without sowing in the terminal
-            Reference:
-                - http://code.activestate.com/recipes/134892-getch-like-unbuffered-character-reading-from-stdin/
+            Method that allows to the input on the key stroke without showing in the terminal
         """
-        stdin_file_descriptor = sys.stdin.fileno()
-        old_settings = termios.tcgetattr(stdin_file_descriptor)
-        try:
-            tty.setraw(stdin_file_descriptor)
-            ch = sys.stdin.read(1)
-        finally:
-            termios.tcsetattr(stdin_file_descriptor, termios.TCSADRAIN, old_settings)
-        return ch
+        return getch()
 
     def _play(self):
         """

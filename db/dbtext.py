@@ -1,6 +1,6 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class DBText."""
-import globals as globals_
+import utils.globals as globals_
 import os
 import pickle
 
@@ -124,7 +124,7 @@ class DBText():
             self._write_db()
             return True
         else:
-            print("Map with name '{}' already exists.".format(map_name)
+            print("Map with name '{}' already exists.".format(map_name))
             return False
 
     def save_user_game(self, user_name, game_name, game):
@@ -140,7 +140,7 @@ class DBText():
             self.users[user_name][game_name] = game
             self._write_db()
         else:
-            print("User-id '{}' doesn't exist.".format(user_name)
+            print("User-id '{}' doesn't exist.".format(user_name))
 
     ####  private functions ###
     def _load_default_maps(self):
@@ -180,4 +180,4 @@ class DBText():
             self.users = loaded_db.users
 
 if __name__ == '__main__':
-    print("test with labyrinth/test.py to reduce import problems"
+    print("test with labyrinth/test.py to reduce import problems")

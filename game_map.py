@@ -9,7 +9,7 @@ from map.components.start   import Start
 from map.components.wall    import Wall
 from map.components.empty   import Empty
 
-import globals as globals_
+import utils.globals as globals_
 
 class GameMap:
     """Defines a game map object. Is the acctual map populated with it's map component objects."""

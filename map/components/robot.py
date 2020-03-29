@@ -2,7 +2,7 @@
 """This module contains the class Robot."""
 from map.components.map_object import MapObject
 from map.components.point import Point
-import globals as globals_
+import utils.globals as globals_
 
 class Robot(MapObject):
     """Defines the robot contained in the map."""
