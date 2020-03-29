@@ -1,6 +1,6 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class Floor."""
-from map_object import MapObject
+from map.components.map_object import MapObject
 
 class Empty(MapObject):
     """Defines the Empty space or not known parts of the map contained in the map."""

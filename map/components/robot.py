@@ -1,7 +1,7 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class Robot."""
-from map_object import MapObject
-from point import Point
+from map.components.map_object import MapObject
+from map.components.point import Point
 import globals as globals_
 
 class Robot(MapObject):

@@ -1,6 +1,6 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class Door."""
-from map_object import MapObject
+from map.components.map_object import MapObject
 
 class Door(MapObject):
 

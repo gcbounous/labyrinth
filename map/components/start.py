@@ -1,6 +1,6 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class Start."""
-from map_object import MapObject
+from map.components.map_object import MapObject
 
 class Start(MapObject):
     """Defines an start object (where the robot will start in the map)."""

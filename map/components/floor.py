@@ -1,6 +1,6 @@
 # -*-coding:Utf-8 -*#
 """This module contains the class Floor."""
-from map_object import MapObject
+from map.components.map_object import MapObject
 
 class Floor(MapObject):
     """Defines the Floor contained in the map."""

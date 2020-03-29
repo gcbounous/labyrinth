@@ -1,6 +1,6 @@
 # -*-coding:Utf-8 -*
 """This module contains the class MapObject."""
-from point import Point
+from map.components.point import Point
 
 class MapObject:
     """Defines any object that can be contained in a map."""
