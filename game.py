@@ -76,10 +76,10 @@ class Game:
             self._print_keys()
 
             move = self._on_key_press()
-            # move = raw_input() # windows
+            # move = input() # windows
             while not self._game_map.move_is_valid(move):
                 move = self._on_key_press()
-                # move = raw_input() # windows
+                # move = input() # windows
 
             if move == globals_.KEYS['QUIT']:
                 print('quit')

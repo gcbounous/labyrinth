@@ -23,12 +23,16 @@ class DBText():
         """
             Method that populates the object attributes
         """
-        if os.path.isfile(globals_.DB_TEXT_PATH):
-            self._load_db()
-        else:
-            self._load_personal_maps()
-            self._load_default_maps()
-            self._write_db()
+        #TODO: to be removed and db must be fixed
+        self._load_personal_maps()
+        self._load_default_maps()
+
+        # if os.path.isfile(globals_.DB_TEXT_PATH):
+        #     self._load_db()
+        # else:
+        #     self._load_personal_maps()
+        #     self._load_default_maps()
+        #     self._write_db()
 
     def get_all_maps(self):
         """
@@ -173,11 +177,12 @@ class DBText():
         """
             Method that loads the data base information into the dsata base object
         """
-        with open(globals_.DB_TEXT_PATH, 'rb') as file_:
-            my_unpickler = pickle.Unpickler(file_)
-            loaded_db = my_unpickler.load()
-            self.maps = loaded_db.maps
-            self.users = loaded_db.users
+        # with open(globals_.DB_TEXT_PATH, 'rb') as file_:
+        #     my_unpickler = pickle.Unpickler(file_)
+        #     loaded_db = my_unpickler.load()
+        #     self.maps = loaded_db.maps
+        #     self.users = loaded_db.users
+        pass
 
 if __name__ == '__main__':
     print("test with labyrinth/test.py to reduce import problems")

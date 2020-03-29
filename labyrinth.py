@@ -26,7 +26,7 @@ class Labyrinth():
         """
         """
         self._db.initialize()
-        self._login()
+        # self._login()
         self._main_menu()
 
     def _login(self):
@@ -35,7 +35,7 @@ class Labyrinth():
         os.system("clear")
         # os.system("cls") # windows
         
-        self._user_name = raw_input("Type your user name: ").upper()
+        self._user_name = input("Type your user name: ").upper()
         all_users_dict = self._db.get_all_users()
 
         if self._user_name in all_users_dict.keys():
@@ -54,26 +54,28 @@ class Labyrinth():
             'L': self._load_game,
             'P': self._preferences,
         }
+
         menu_ok = False
         while not menu_ok:
             self._print_main_menu()
-            menu = raw_input()
+            menu = input()
             try:
                 if menu.isdigit():
                     menu = int(menu)
+                    assert (menu > 0 and menu <= len(dic_menu)/2+1)
                 else:
                     menu = menu.upper()
-                assert ((menu > 0 and menu <= len(dic_menu)/2+1) or (menu in 'NLPQ' and len(menu) == 1))
+                    assert (menu in 'NLPQ' and len(menu) == 1)
             except:
                 # ERROR
                 print("Please choose a valid menu number or letter.")
-                raw_input()
+                input() # TODO: Do a recurssive call
             else:
                 if menu == 4 or menu == 'Q':
                     menu_ok = True
                 else:
                     function = dic_menu[menu]
-                    menu_ok = function()
+                    menu_ok = function() # TODO: check if should be True
         self._quit()
 
     def _new_game(self):
@@ -95,17 +97,18 @@ class Labyrinth():
             menu_string += "{}) {}{}Q{}uit".format(len(map_names)+1,'\033[1m','\033[4m','\033[0m')
             print(menu_string)
 
-            menu = raw_input()
+            menu = input()
             try:
                 if menu.isdigit():
                     menu = int(menu)
+                    assert (menu >= 0 and menu <= len(map_names)+1)
                 else:
                     menu = menu.upper()
-                assert ((menu >= 0 and menu <= len(map_names)+1) or (menu in 'RQ' and len(menu) == 1))
+                    assert (menu in 'RQ' and len(menu) == 1)
             except:
                 # ERROR
                 print("Please choose a valid map number or letter.")
-                raw_input()
+                input() # TODO: Do a recurssive call
             else:
                 if menu == len(map_names) or menu == 'R':
                     quit = False
@@ -129,7 +132,7 @@ class Labyrinth():
         self._user = self._db.get_user(self._user_name)
         if len(self._user) == 0:
             print("{}, you have no saved games. (press Enter to return to the main menu)".format(self._user_name))
-            raw_input()
+            input()
             return False
         else:
             menu_ok = False
@@ -142,7 +145,7 @@ class Labyrinth():
                     game_names.append(game_name)
                     print("{}) {}".format(i, game_name))
 
-                menu = raw_input()
+                menu = input()
                 try:
                     menu = int(menu)
                     assert (menu >= 0 and menu < len(self._user))
@@ -162,10 +165,10 @@ class Labyrinth():
             return True if wants to return to main menu
         """
         print("\nLoad this map? (Y/N)")
-        menu = raw_input().upper()
+        menu = input().upper()
         while menu not in "YN" or len(menu) != 1:
             print("Load this map? (Y/N)")
-            menu = raw_input().upper()
+            menu = input().upper()
 
         if menu != "Y":
             return False
@@ -176,10 +179,10 @@ class Labyrinth():
                 self._save_game(game)
 
             print("Load another game? (Y/N)".format(self._user_name))
-            menu = raw_input().upper()
+            menu = input().upper()
             while menu not in "YN" or len(menu) != 1:
                 print("Load another game? (Y/N)".format(self._user_name))
-                menu = raw_input().upper()
+                menu = input().upper()
 
             if menu == 'Y':
                 return False
@@ -190,10 +193,10 @@ class Labyrinth():
         """
         """
         print("{}, do you want to save you game progression? (Y/N)".format(self._user_name))
-        menu = raw_input().upper()
+        menu = input().upper()
         while menu not in "YN" or len(menu) != 1:
             print("{}, do you want to save you game progression? (Y/N)".format(self._user_name))
-            menu = raw_input().upper()
+            menu = input().upper()
 
         if menu == "Y":
             self._db.save_user_game(self._user_name, game.get_name(), game)

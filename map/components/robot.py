@@ -46,4 +46,4 @@ class Robot(MapObject):
         self._point.set_x(self.get_point().get_x()-1)
 
 if __name__ == '__main__':
-    print(raw_input())
+    print(input())

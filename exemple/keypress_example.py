@@ -74,7 +74,7 @@ def main():
 	print("up and down, and O and P for left and right.")
 	print("See how long you can survive! Score at the end.")
 	print("")
-	character=raw_input("Hit <RETURN/ENTER> to begin... ")
+	character=input("Hit <RETURN/ENTER> to begin... ")
 
 	# Generate the game window as a single text string.
 	# This assumes a standard 80x24 terminal text window.
@@ -150,7 +150,7 @@ def main():
 
 	# Reset the cursor, etc...
 	os.system("setterm -cursor on")
-	character=raw_input("Have another game? (Y/N):- ")
+	character=input("Have another game? (Y/N):- ")
 	if character=="y": main()
 	if character=="Y": main()
 	if character=="": main()
