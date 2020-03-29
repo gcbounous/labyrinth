@@ -93,7 +93,7 @@ class Labyrinth():
                 menu_string += "{}) {}\n".format(i, map_name)
             menu_string += "\n{}) {}{}R{}eturn to main menu.\n".format(len(map_names),'\033[1m','\033[4m','\033[0m')
             menu_string += "{}) {}{}Q{}uit".format(len(map_names)+1,'\033[1m','\033[4m','\033[0m')
-            print menu_string
+            print(menu_string)
 
             menu = raw_input()
             try:
@@ -115,7 +115,7 @@ class Labyrinth():
                     menu_ok = True
                 else:
                     map_name = map_names[menu]
-                    print maps[map_name]
+                    print(maps[map_name])
                     game = Game(map_name, maps[map_name])
                     game.print_map(visible_only = False)
 
@@ -128,7 +128,7 @@ class Labyrinth():
         """
         self._user = self._db.get_user(self._user_name)
         if len(self._user) == 0:
-            print "{}, you have no saved games. (press Enter to return to the main menu)".format(self._user_name)
+            print("{}, you have no saved games. (press Enter to return to the main menu)".format(self._user_name))
             raw_input()
             return False
         else:
@@ -140,7 +140,7 @@ class Labyrinth():
                 game_names = []
                 for i,game_name in enumerate(self._user.keys()):
                     game_names.append(game_name)
-                    print "{}) {}".format(i, game_name)
+                    print("{}) {}".format(i, game_name))
 
                 menu = raw_input()
                 try:
@@ -161,10 +161,10 @@ class Labyrinth():
         """
             return True if wants to return to main menu
         """
-        print "\nLoad this map? (Y/N)"
+        print("\nLoad this map? (Y/N)")
         menu = raw_input().upper()
         while menu not in "YN" or len(menu) != 1:
-            print "Load this map? (Y/N)"
+            print("Load this map? (Y/N)")
             menu = raw_input().upper()
 
         if menu != "Y":
@@ -175,10 +175,10 @@ class Labyrinth():
             if game_status == globals_.Status.IN_PLAY:
                 self._save_game(game)
 
-            print "Load another game? (Y/N)".format(self._user_name)
+            print("Load another game? (Y/N)".format(self._user_name))
             menu = raw_input().upper()
             while menu not in "YN" or len(menu) != 1:
-                print "Load another game? (Y/N)".format(self._user_name)
+                print("Load another game? (Y/N)".format(self._user_name))
                 menu = raw_input().upper()
 
             if menu == 'Y':
@@ -189,10 +189,10 @@ class Labyrinth():
     def _save_game(self, game):
         """
         """
-        print "{}, do you want to save you game progression? (Y/N)".format(self._user_name)
+        print("{}, do you want to save you game progression? (Y/N)".format(self._user_name))
         menu = raw_input().upper()
         while menu not in "YN" or len(menu) != 1:
-            print "{}, do you want to save you game progression? (Y/N)".format(self._user_name)
+            print("{}, do you want to save you game progression? (Y/N)".format(self._user_name))
             menu = raw_input().upper()
 
         if menu == "Y":
@@ -201,13 +201,13 @@ class Labyrinth():
     def _preferences(self):
         """
         """
-        print "pref"
+        print("pref")
         pass
 
     def _quit(self):
         """
         """
-        print "BYE BYE, {}!!".format(self._user_name)
+        print("BYE BYE, {}!!".format(self._user_name))
 
     def _print_main_menu(self):
         """

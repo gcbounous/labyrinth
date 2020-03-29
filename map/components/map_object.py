@@ -89,4 +89,4 @@ if __name__ == "__main__":
     map_1 = MapObject("lç", True, Point(1,1))
     map_2 = MapObject("\o", True, Point(1,1))
 
-    print map_1 == map_2
+    print(map_1 == map_2)

@@ -54,7 +54,7 @@ class DBText():
         try:
             return self.maps[map_name]
         except KeyError:
-            print "Map '{}' doesn't exist.".format(map_name)
+            print("Map '{}' doesn't exist.".format(map_name))
             return None
 
     def get_user(self, user_name):
@@ -67,7 +67,7 @@ class DBText():
         try:
             return self.users[user_name]
         except KeyError:
-            print "User-id '{}' doesn't exist.".format(user_name)
+            print("User-id '{}' doesn't exist.".format(user_name))
             return None
 
     def get_saved_game(self, user_name, game_name):
@@ -84,9 +84,9 @@ class DBText():
             if game_name in user.keys():
                 game = user[game_name]
             else:
-                print "Game '{}' doesn't exist.".format(game_name)
+                print("Game '{}' doesn't exist.".format(game_name))
         else:
-            print "User-id '{}' doesn't exist.".format(user_name)
+            print("User-id '{}' doesn't exist.".format(user_name))
         return game
 
     def new_user(self, user_name):
@@ -101,7 +101,7 @@ class DBText():
             self._write_db()
             return True
         else:
-            print "User-id '{}' already exists.".format(user_name)
+            print("User-id '{}' already exists.".format(user_name))
             return False
 
     def new_map(self, map_name, map_text):
@@ -124,7 +124,7 @@ class DBText():
             self._write_db()
             return True
         else:
-            print "Map with name '{}' already exists.".format(map_name)
+            print("Map with name '{}' already exists.".format(map_name)
             return False
 
     def save_user_game(self, user_name, game_name, game):
@@ -140,7 +140,7 @@ class DBText():
             self.users[user_name][game_name] = game
             self._write_db()
         else:
-            print "User-id '{}' doesn't exist.".format(user_name)
+            print("User-id '{}' doesn't exist.".format(user_name)
 
     ####  private functions ###
     def _load_default_maps(self):
@@ -180,4 +180,4 @@ class DBText():
             self.users = loaded_db.users
 
 if __name__ == '__main__':
-    print "test with labyrinth/test.py to reduce import problems"
+    print("test with labyrinth/test.py to reduce import problems"

@@ -215,7 +215,7 @@ class GameMap:
         """
             Prints current game_map state
         """
-        print str(self)
+        print(str(self))
 
     def move_robot(self, move):
         """
@@ -349,5 +349,5 @@ class GameMap:
         return game_text
 
 if __name__ == '__main__':
-    print 'oi'
+    print('oi')
     #test in test.py

@@ -12,4 +12,4 @@ class Floor(MapObject):
 
 
 if __name__ == '__main__':
-    print raw_input()
+    print(raw_input())

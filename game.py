@@ -95,7 +95,7 @@ class Game:
                 # move = raw_input() # windows
 
             if move == globals_.KEYS['QUIT']:
-                print 'quit'
+                print('quit')
                 break
 
             self._game_map.move_robot(move)
@@ -110,7 +110,7 @@ class Game:
             if self._game_map.is_end_of_game():
                 self.print_map()
                 self._status = globals_.Status.OVER
-                print "---- YOU WIN!! ----"
+                print("---- YOU WIN!! ----")
                 break
 
     def _print_keys(self):
@@ -123,7 +123,7 @@ class Game:
                 keys = "{}\n{}\t-\t[{}]".format(keys, name, k)
         keys = "{}\n{}\t-\t[{}]".format(keys, 'QUIT', globals_.KEYS['QUIT'])
 
-        print keys 
+        print(keys)
 
     def __repr__(self):
         """
@@ -147,5 +147,5 @@ class Game:
         return game_text
 
 if __name__ == '__main__':
-    print 'oi'
+    print('oi')
     #test in test.py
